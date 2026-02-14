@@ -17,61 +17,74 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Simple Navbar",
             html: `
 <nav class="tmp-navbar">
-    <div class="tmp-logo">BRAND</div>
+    <div class="tmp-logo">VELOCITY</div>
     <ul class="tmp-nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">Resources</a></li>
     </ul>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+        <a href="#" style="text-decoration: none; color: #555; font-size: 0.9rem;">Sign In</a>
+        <a href="#" class="btn btn-primary">Get Started</a>
+    </div>
 </nav>`
         },
         hero_centered: {
             name: "Centered Hero",
             html: `
-<header class="tmp-hero">
-    <h1>Create Something Amazing</h1>
-    <p>A simple, centered hero section to capture attention and deliver your core message effectively.</p>
+<header class="tmp-hero" style="background: linear-gradient(to bottom, #f8fafc, #ffffff);">
+    <h1 style="max-width: 900px; margin-left: auto; margin-right: auto;">Architecting the future of digital experience.</h1>
+    <p>A unified platform that empowers developers to build, scale, and deliver exceptional software with unprecedented speed and reliability.</p>
     <div class="tmp-btn-group">
-        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#" class="btn btn-primary" style="padding: 1rem 2rem;">Explore the Platform</a>
+        <a href="#" class="btn btn-outline" style="padding: 1rem 2rem;">Watch Overview</a>
     </div>
 </header>`
         },
         hero_split: {
             name: "Split Hero",
             html: `
-<header style="display: flex; align-items: center; padding: 6rem 5%; gap: 4rem;">
-    <div style="flex: 1;">
-        <h1 style="font-size: 3rem; margin-bottom: 1.5rem;">Productivity first, always.</h1>
-        <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">Stop wasting time on configuration. Start building features that matter to your users today.</p>
-        <div style="display: flex; gap: 1rem;">
-            <a href="#" class="btn btn-primary">Join for Free</a>
+<header style="display: flex; align-items: center; padding: 6rem 5%; gap: 6rem; background: #fff;">
+    <div style="flex: 1.2;">
+        <span style="color: #2563eb; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; display: block; margin-bottom: 1rem;">Engineering Excellence</span>
+        <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1;">Focus on what matters most.</h1>
+        <p style="font-size: 1.15rem; color: #475569; margin-bottom: 2.5rem; line-height: 1.6;">Eliminate technical debt and streamline your workflow with our production-ready infrastructure components designed for enterprise performance.</p>
+        <div style="display: flex; gap: 1.25rem;">
+            <a href="#" class="btn btn-primary" style="padding: 1rem 2rem;">Start Building</a>
+            <a href="#" class="btn btn-outline" style="padding: 1rem 2rem;">View Components</a>
         </div>
     </div>
-    <div style="flex: 1; aspect-ratio: 4/3; background: #f1f5f9; border-radius: 12px; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-        <span>Illustration / Image Placeholder</span>
+    <div style="flex: 1; aspect-ratio: 16/10; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; color: #94a3b8; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <div style="text-align: center;">
+            <div style="width: 48px; height: 48px; background: #e2e8f0; border-radius: 12px; margin: 0 auto 1rem;"></div>
+            <span style="font-size: 0.9rem;">Visual Asset Placeholder</span>
+        </div>
     </div>
 </header>`
         },
         features_grid: {
             name: "Features Grid",
             html: `
-<section class="tmp-features">
-    <div style="text-align: center; margin-bottom: 3rem;"><h2>Why Choose Us</h2></div>
+<section class="tmp-features" style="background: #ffffff;">
+    <div style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 2.25rem;">Designed for modern performance</h2>
+        <p style="color: #64748b; max-width: 600px; margin: 1rem auto 0;">Powerful tools to help you manage every aspect of your application lifecycle.</p>
+    </div>
     <div class="tmp-grid">
         <div class="tmp-feat-card">
-            <div class="tmp-feat-icon"></div>
-            <h3>Fast Performance</h3>
-            <p>Optimized for speed and efficiency across all devices.</p>
+            <div class="tmp-feat-icon" style="background: #eff6ff;"></div>
+            <h3>Intelligent Analytics</h3>
+            <p>Gain deep insights into your user behavior with real-time data processing and reporting.</p>
         </div>
         <div class="tmp-feat-card">
-            <div class="tmp-feat-icon"></div>
-            <h3>Secure by Design</h3>
-            <p>Your data is encrypted and protected with industry standards.</p>
+            <div class="tmp-feat-icon" style="background: #f0fdf4;"></div>
+            <h3>Collaborative Workflow</h3>
+            <p>Ship faster with built-in collaboration tools designed for distributed engineering teams.</p>
         </div>
         <div class="tmp-feat-card">
-            <div class="tmp-feat-icon"></div>
-            <h3>24/7 Support</h3>
-            <p>Our team is always here to help you solve any issues.</p>
+            <div class="tmp-feat-icon" style="background: #fefce8;"></div>
+            <h3>Scalable Infrastructure</h3>
+            <p>Our global edge network ensures sub-millisecond latency for your users in over 100 regions.</p>
         </div>
     </div>
 </section>`
@@ -79,20 +92,41 @@ document.addEventListener('DOMContentLoaded', () => {
         content_center: {
             name: "Centered Content",
             html: `
-<section style="padding: 5rem 5%; text-align: center; max-width: 800px; margin: 0 auto;">
-    <h2 style="margin-bottom: 1.5rem;">Build with confidence</h2>
-    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">Our toolkit provides all the essential components you need to build professional websites quickly. Focus on your content and let us handle the layout logic.</p>
+<section style="padding: 6rem 5%; text-align: center; max-width: 850px; margin: 0 auto;">
+    <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">Security you can trust</h2>
+    <p style="font-size: 1.1rem; color: #475569; line-height: 1.7;">Infrastructure is critical, which is why we've built security into every layer. From hardware-level isolation to automated encryption, we ensure your data and applications are always protected by industry-leading standards.</p>
 </section>`
         },
         footer_simple: {
             name: "Simple Footer",
             html: `
-<footer style="padding: 3rem 5%; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 0.9rem;">
-    <p>© 2026 Your Company. All rights reserved.</p>
-    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
-        <a href="#" style="color: inherit; text-decoration: none;">Twitter</a>
-        <a href="#" style="color: inherit; text-decoration: none;">LinkedIn</a>
-        <a href="#" style="color: inherit; text-decoration: none;">GitHub</a>
+<footer style="padding: 4rem 5%; border-top: 1px solid #f1f5f9; background: #fff;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
+        <div style="flex: 1; min-width: 200px;">
+            <div style="font-weight: 900; font-size: 1.25rem; margin-bottom: 1rem;">VELOCITY</div>
+            <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">Building the foundational blocks for the next generation of web applications.</p>
+        </div>
+        <div style="display: flex; gap: 4rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: #111;">Product</span>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Features</a>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Integrations</a>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Pricing</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: #111;">Company</span>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">About</a>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Blog</a>
+                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Careers</a>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #94a3b8;">
+        <div>© 2026 Velocity Systems. All rights reserved.</div>
+        <div style="display: flex; gap: 2rem;">
+            <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+            <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+        </div>
     </div>
 </footer>`
         }

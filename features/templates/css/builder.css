@@ -111,8 +111,8 @@
     background: #ffffff;
     padding: 5px;
     border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
 }
 
 .section-wrapper:hover .section-controls {

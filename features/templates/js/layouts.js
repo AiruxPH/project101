@@ -13,48 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "SaaS Landing Page",
             html: `
                 <nav class="tmp-navbar">
-                    <div class="tmp-logo">CLOUD-X</div>
+                    <div class="tmp-logo">VELOCITY</div>
                     <ul class="tmp-nav-links">
                         <li><a href="#">Solutions</a></li>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Enterprise</a></li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Start Trial</a>
+                    <a href="#" class="btn btn-primary">Start Building</a>
                 </nav>
                 <header class="tmp-hero">
-                    <h1>Scale your business<br>without the complexity.</h1>
-                    <p>The all-in-one platform for modern teams to build, deploy, and manage distributed applications at global scale.</p>
+                    <h1>Build the future of<br>software, today.</h1>
+                    <p>The unified platform for modern engineering teams to architect, deploy, and scale high-performance applications with global reach.</p>
                     <div class="tmp-btn-group">
-                        <a href="#" class="btn btn-primary tmp-btn-lg">View Demo</a>
-                        <a href="#" class="btn btn-outline tmp-btn-lg">Read Docs</a>
+                        <a href="#" class="btn btn-primary tmp-btn-lg">Start Free Trial</a>
+                        <a href="#" class="btn btn-outline tmp-btn-lg">Book a Demo</a>
                     </div>
                 </header>
                 <section class="tmp-features">
                     <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                        <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Features</span>
-                        <h2 style="font-size: 2.5rem; margin-top: 1rem;">Everything you need to grow</h2>
+                        <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Infrastructure</span>
+                        <h2 style="font-size: 2.5rem; margin-top: 1rem;">Optimized for Enterprise</h2>
                     </div>
                     <div class="tmp-grid">
                         <div class="tmp-feat-card">
-                            <div class="tmp-feat-icon" style="background: #dbeafe;"></div>
-                            <h3>Global Edge</h3>
-                            <p>Deploy your code to over 300 locations worldwide for sub-millisecond latency.</p>
+                            <div class="tmp-feat-icon" style="background: #eff6ff;"></div>
+                            <h3>Global Edge Network</h3>
+                            <p>Deploy to over 300 locations worldwide for sub-millisecond latency and high availability.</p>
                         </div>
                         <div class="tmp-feat-card">
-                            <div class="tmp-feat-icon" style="background: #dcfce7;"></div>
-                            <h3>Auto-Scaling</h3>
-                            <p>Our infrastructure adjusts dynamically to your traffic, so you only pay for what you use.</p>
+                            <div class="tmp-feat-icon" style="background: #f0fdf4;"></div>
+                            <h3>Automated Scaling</h3>
+                            <p>Intelligence-driven infrastructure that adjusts to your traffic patterns in real-time.</p>
                         </div>
                         <div class="tmp-feat-card">
-                            <div class="tmp-feat-icon" style="background: #fef9c3;"></div>
-                            <h3>Enterprise Security</h3>
-                            <p>Built-in DDoS protection, automated SSL, and isolation by default.</p>
+                            <div class="tmp-feat-icon" style="background: #fffbeb;"></div>
+                            <h3>End-to-End Security</h3>
+                            <p>Advanced DDoS protection, automated SOC2 compliance, and hardware-level isolation.</p>
                         </div>
                     </div>
                 </section>
-                <footer style="padding: 4rem 5%; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 0.9rem;">
-                    <div>© 2026 CLOUD-X Inc. All rights reserved.</div>
-                    <div style="display: flex; gap: 2rem;">
+                <footer style="padding: 4rem 5%; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 0.9rem;">
+                    <div>© 2026 Velocity Technologies. All rights reserved.</div>
+                    <div style="display: flex; gap: 2.5rem;">
+                        <a href="#" style="color: inherit; text-decoration: none;">Security</a>
                         <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
                         <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
                     </div>
@@ -64,29 +65,35 @@ document.addEventListener('DOMContentLoaded', () => {
         portfolio: {
             name: "Minimalist Portfolio",
             html: `
-                <div style="max-width: 900px; margin: 0 auto; padding: 5rem 2rem;">
-                    <header style="margin-bottom: 5rem;">
-                        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">Alex Rivera</h1>
-                        <p style="font-size: 1.25rem; color: #555;">Product Designer & Creative Developer</p>
+                <div style="max-width: 1000px; margin: 0 auto; padding: 6rem 2rem;">
+                    <header style="margin-bottom: 6rem;">
+                        <span style="display: block; margin-bottom: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Available for projects</span>
+                        <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1;">Julian Thorne</h1>
+                        <p style="font-size: 1.25rem; color: #475569; max-width: 600px; line-height: 1.6;">Independent product designer and engineer focusing on high-impact digital experiences and functional aesthetics.</p>
                     </header>
                     <section>
-                        <h2 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: #999; margin-bottom: 3rem;">Selected Work</h2>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;">
                             <div>
-                                <div style="aspect-ratio: 1; background: #eee; border-radius: 4px; margin-bottom: 1.5rem;"></div>
-                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Nova Banking App</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Visual Identity & Mobile Experience</p>
+                                <div style="aspect-ratio: 16/10; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 2rem;"></div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Nexus Ecosystem</h3>
+                                <p style="color: #64748b; font-size: 1rem;">Brand Identity & Web Core Integration</p>
                             </div>
                             <div>
-                                <div style="aspect-ratio: 1; background: #eee; border-radius: 4px; margin-bottom: 1.5rem;"></div>
-                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Ember E-commerce</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Interface Design & Web Development</p>
+                                <div style="aspect-ratio: 16/10; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 2rem;"></div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Aura Workspace</h3>
+                                <p style="color: #64748b; font-size: 1rem;">Interface Design & Engineering</p>
                             </div>
                         </div>
                     </section>
-                    <footer style="margin-top: 8rem; border-top: 1px solid #eee; padding-top: 4rem;">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 2rem;">Let's work together.</h2>
-                        <a href="mailto:hello@alexrivera.com" style="font-size: 1.1rem; color: #111; font-weight: 600;">hello@alexrivera.com</a>
+                    <footer style="margin-top: 10rem; border-top: 1px solid #f1f5f9; padding-top: 4rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div>
+                            <h2 style="font-size: 2rem; margin-bottom: 2.5rem; font-weight: 800;">Let's build something<br>extraordinary.</h2>
+                            <a href="mailto:thirteen@ Thorne.studio" style="font-size: 1.25rem; color: #111; font-weight: 700; text-decoration: none; border-bottom: 2px solid #111;">hello@thorne.studio</a>
+                        </div>
+                        <div style="display: flex; gap: 2rem; color: #64748b; font-weight: 600;">
+                            <span>LinkedIn</span>
+                            <span>Read.cv</span>
+                        </div>
                     </footer>
                 </div>
             `
@@ -95,51 +102,54 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Enterprise Dashboard",
             html: `
                 <div class="tmp-dash-container">
-                    <aside class="tmp-dash-sidebar">
-                        <div style="font-weight: 900; font-size: 1.25rem; margin-bottom: 3rem;">CORE-OS</div>
-                        <nav style="display: flex; flex-direction: column; gap: 1rem;">
-                            <a href="#" style="color: #fff; text-decoration: none; padding: 0.75rem 1rem; background: rgba(255,255,255,0.1); border-radius: 6px;">Overview</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.75rem 1rem;">Analytics</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.75rem 1rem;">Reports</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.75rem 1rem;">Settings</a>
+                    <aside class="tmp-dash-sidebar" style="background: #0f172a;">
+                        <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 4rem; letter-spacing: -0.02em;">NUCLEUS</div>
+                        <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <a href="#" style="color: #fff; text-decoration: none; padding: 0.85rem 1.25rem; background: #3b82f6; border-radius: 8px; font-weight: 600;">Dashboard</a>
+                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Analytics</a>
+                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Operations</a>
+                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Team Management</a>
                         </nav>
                     </aside>
                     <main class="tmp-dash-content">
                         <header class="tmp-dash-header">
-                            <h1 style="font-size: 1.5rem; font-weight: 700;">System Overview</h1>
-                            <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div>
+                                <h1 style="font-size: 1.75rem; font-weight: 800;">System Intelligence</h1>
+                                <p style="font-size: 0.9rem; color: #64748b; margin-top: 0.25rem;">Real-time performance metrics and insights</p>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
                                 <div style="text-align: right;">
-                                    <div style="font-size: 0.85rem; font-weight: 600;">Admin User</div>
-                                    <div style="font-size: 0.75rem; color: #64748b;">Premium Account</div>
+                                    <div style="font-size: 0.9rem; font-weight: 700;">Sarah Chen</div>
+                                    <div style="font-size: 0.75rem; color: #3b82f6; font-weight: 700;">System Architect</div>
                                 </div>
-                                <div style="width: 40px; height: 40px; background: #cbd5e1; border-radius: 50%;"></div>
+                                <div style="width: 44px; height: 44px; background: #e2e8f0; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"></div>
                             </div>
                         </header>
                         <div class="tmp-dash-grid">
                             <div class="tmp-dash-stat">
-                                <div class="label">Total Revenue</div>
-                                <div class="value">$45,231.89</div>
-                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.5rem;">+20.1% from last month</div>
+                                <div class="label">Processing Power</div>
+                                <div class="value">94.2%</div>
+                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.75rem; font-weight: 600;">Optimal Performance</div>
                             </div>
                             <div class="tmp-dash-stat">
-                                <div class="label">Subscriptions</div>
-                                <div class="value">+2,350</div>
-                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.5rem;">+180.1% from last month</div>
+                                <div class="label">Active Sessions</div>
+                                <div class="value">14,892</div>
+                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.75rem; font-weight: 600;">+14% vs last week</div>
                             </div>
                             <div class="tmp-dash-stat">
-                                <div class="label">Active Users</div>
-                                <div class="value">12,234</div>
-                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.5rem;">+19% from last month</div>
+                                <div class="label">Response Time</div>
+                                <div class="value">18ms</div>
+                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.75rem; font-weight: 600;">Sub-threshold latency</div>
                             </div>
                             <div class="tmp-dash-stat">
-                                <div class="label">Bounce Rate</div>
-                                <div class="value">42.5%</div>
-                                <div style="font-size: 0.75rem; color: #ef4444; margin-top: 0.5rem;">+4.3% from last month</div>
+                                <div class="label">Error Rate</div>
+                                <div class="value">0.002%</div>
+                                <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.75rem; font-weight: 600;">Stable baseline</div>
                             </div>
                         </div>
-                        <div style="margin-top: 2rem; background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); min-height: 300px;">
-                            <h3 style="margin-bottom: 1.5rem;">Recent Activity</h3>
-                            <div style="color: #64748b; font-size: 0.9rem; text-align: center; margin-top: 4rem;">Activity logs will appear here.</div>
+                        <div style="margin-top: 2rem; background: #fff; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03); min-height: 400px; border: 1px solid #f1f5f9;">
+                            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 2rem;">Traffic Distribution</h3>
+                            <div style="color: #94a3b8; font-size: 0.95rem; text-align: center; margin-top: 6rem;">Data visualization module loading...</div>
                         </div>
                     </main>
                 </div>
