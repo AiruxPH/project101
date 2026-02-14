@@ -14,8 +14,8 @@
 
 <body>
     <!-- Dynamically loaded Header and Navbar -->
-    <div data-include="../../includes/header.html"></div>
-    <div data-include="../../includes/navbar.html"></div>
+    <div data-include="../../includes/header.html" data-root="../../"></div>
+    <div data-include="../../includes/navbar.html" data-root="../../"></div>
 
     <div class="builder-container">
         <!-- Sidebar -->
@@ -64,15 +64,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- New Sidebar Footer for primary actions -->
+            <div class="sidebar-footer"
+                style="padding: 1.5rem; border-top: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 0.75rem;">
+                <button id="clear-canvas" class="btn btn-outline" style="width: 100%;">Clear All</button>
+                <button id="export-code" class="btn btn-primary" style="width: 100%;">Export HTML/CSS</button>
+            </div>
         </aside>
 
         <!-- Builder Interface -->
-        <main class="builder-canvas-area" style="padding-top: 80px;">
-            <div class="builder-topbar">
-                <button id="clear-canvas" class="btn btn-outline">Clear All</button>
-                <button id="export-code" class="btn btn-primary">Export HTML/CSS</button>
-            </div>
-
+        <main class="builder-canvas-area">
             <div id="canvas-frame" class="canvas-frame">
                 <div class="empty-canvas-msg">
                     <p>Select components from the left to start building your layout.</p>
