@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </section>
-                <footer style="padding: 4rem 5%; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 0.9rem;">
+                <footer style="padding: 4rem 5%; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; color: #475569; font-size: 0.9rem;">
                     <div>© 2026 Velocity Technologies. All rights reserved.</div>
                     <div style="display: flex; gap: 2.5rem;">
                         <a href="#" style="color: inherit; text-decoration: none;">Security</a>
@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;">
                             <div>
                                 <div style="aspect-ratio: 16/10; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 2rem;"></div>
-                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Nexus Ecosystem</h3>
-                                <p style="color: #64748b; font-size: 1rem;">Brand Identity & Web Core Integration</p>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #0f172a;">Nexus Ecosystem</h3>
+                                <p style="color: #475569; font-size: 1rem;">Brand Identity & Web Core Integration</p>
                             </div>
                             <div>
                                 <div style="aspect-ratio: 16/10; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 2rem;"></div>
-                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Aura Workspace</h3>
-                                <p style="color: #64748b; font-size: 1rem;">Interface Design & Engineering</p>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #0f172a;">Aura Workspace</h3>
+                                <p style="color: #475569; font-size: 1rem;">Interface Design & Engineering</p>
                             </div>
                         </div>
                     </section>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h2 style="font-size: 2rem; margin-bottom: 2.5rem; font-weight: 800;">Let's build something<br>extraordinary.</h2>
                             <a href="mailto:thirteen@ Thorne.studio" style="font-size: 1.25rem; color: #111; font-weight: 700; text-decoration: none; border-bottom: 2px solid #111;">hello@thorne.studio</a>
                         </div>
-                        <div style="display: flex; gap: 2rem; color: #64748b; font-weight: 600;">
+                        <div style="display: flex; gap: 2rem; color: #475569; font-weight: 600;">
                             <span>LinkedIn</span>
                             <span>Read.cv</span>
                         </div>
@@ -102,13 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Enterprise Dashboard",
             html: `
                 <div class="tmp-dash-container">
-                    <aside class="tmp-dash-sidebar" style="background: #0f172a;">
-                        <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 4rem; letter-spacing: -0.02em;">NUCLEUS</div>
+                    <aside class="tmp-dash-sidebar" style="background: #0f172a; color: #fff;">
+                        <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 4rem; letter-spacing: -0.02em; color: #fff;">NUCLEUS</div>
                         <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
                             <a href="#" style="color: #fff; text-decoration: none; padding: 0.85rem 1.25rem; background: #3b82f6; border-radius: 8px; font-weight: 600;">Dashboard</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Analytics</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Operations</a>
-                            <a href="#" style="color: #94a3b8; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Team Management</a>
+                            <a href="#" style="color: #cbd5e1; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Analytics</a>
+                            <a href="#" style="color: #cbd5e1; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Operations</a>
+                            <a href="#" style="color: #cbd5e1; text-decoration: none; padding: 0.85rem 1.25rem; transition: 0.2s;">Team Management</a>
                         </nav>
                     </aside>
                     <main class="tmp-dash-content">

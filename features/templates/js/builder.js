@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="#">Resources</a></li>
     </ul>
     <div style="display: flex; gap: 1rem; align-items: center;">
-        <a href="#" style="text-decoration: none; color: #555; font-size: 0.9rem;">Sign In</a>
+        <a href="#" style="text-decoration: none; color: #334155; font-size: 0.9rem;">Sign In</a>
         <a href="#" class="btn btn-primary">Get Started</a>
     </div>
 </nav>`
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <header style="display: flex; align-items: center; padding: 6rem 5%; gap: 6rem; background: #fff;">
     <div style="flex: 1.2;">
         <span style="color: #2563eb; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; display: block; margin-bottom: 1rem;">Engineering Excellence</span>
-        <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1;">Focus on what matters most.</h1>
-        <p style="font-size: 1.15rem; color: #475569; margin-bottom: 2.5rem; line-height: 1.6;">Eliminate technical debt and streamline your workflow with our production-ready infrastructure components designed for enterprise performance.</p>
+        <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: #0f172a;">Focus on what matters most.</h1>
+        <p style="font-size: 1.15rem; color: #334155; margin-bottom: 2.5rem; line-height: 1.6;">Eliminate technical debt and streamline your workflow with our production-ready infrastructure components designed for enterprise performance.</p>
         <div style="display: flex; gap: 1.25rem;">
             <a href="#" class="btn btn-primary" style="padding: 1rem 2rem;">Start Building</a>
             <a href="#" class="btn btn-outline" style="padding: 1rem 2rem;">View Components</a>
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             html: `
 <section class="tmp-features" style="background: #ffffff;">
     <div style="text-align: center; margin-bottom: 4rem;">
-        <h2 style="font-size: 2.25rem;">Designed for modern performance</h2>
-        <p style="color: #64748b; max-width: 600px; margin: 1rem auto 0;">Powerful tools to help you manage every aspect of your application lifecycle.</p>
+        <h2 style="font-size: 2.25rem; color: #0f172a;">Designed for modern performance</h2>
+        <p style="color: #475569; max-width: 600px; margin: 1rem auto 0;">Powerful tools to help you manage every aspect of your application lifecycle.</p>
     </div>
     <div class="tmp-grid">
         <div class="tmp-feat-card">
@@ -103,21 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
 <footer style="padding: 4rem 5%; border-top: 1px solid #f1f5f9; background: #fff;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
         <div style="flex: 1; min-width: 200px;">
-            <div style="font-weight: 900; font-size: 1.25rem; margin-bottom: 1rem;">VELOCITY</div>
-            <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">Building the foundational blocks for the next generation of web applications.</p>
+            <div style="font-weight: 900; font-size: 1.25rem; margin-bottom: 1rem; color: #0f172a;">VELOCITY</div>
+            <p style="font-size: 0.9rem; color: #475569; line-height: 1.5;">Building the foundational blocks for the next generation of web applications.</p>
         </div>
         <div style="display: flex; gap: 4rem;">
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                 <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: #111;">Product</span>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Features</a>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Integrations</a>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Pricing</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">Features</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">Integrations</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">Pricing</a>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                 <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: #111;">Company</span>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">About</a>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Blog</a>
-                <a href="#" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Careers</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">About</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">Blog</a>
+                <a href="#" style="color: #475569; text-decoration: none; font-size: 0.9rem;">Careers</a>
             </div>
         </div>
     </div>
