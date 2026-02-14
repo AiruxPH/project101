@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whole-Page Layout Templates - PROJECT 101</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/layouts.css">
+    <!-- Component Loader Script -->
+    <script src="../../js/loader.js" defer></script>
+</head>
+
+<body>
+    <!-- Dynamically loaded Header and Navbar -->
+    <div data-include="../../includes/header.html"></div>
+    <div data-include="../../includes/navbar.html"></div>
+
+    <div class="templates-feature-container">
+        <!-- Feature Toolbar -->
+        <header class="feature-toolbar">
+            <div class="feature-title">
+                <h1>Layout Templates Gallery</h1>
+            </div>
+            <div class="template-controls">
+                <button id="copy-code" class="btn btn-outline">Copy Full Code</button>
+                <button id="download-bundle" class="btn btn-primary">Download Bundle</button>
+            </div>
+        </header>
+
+        <main class="feature-main">
+            <!-- Sidebar: Selection -->
+            <aside class="layout-gallery">
+                <div class="gallery-section-title">Web Pages</div>
+                <div class="layout-card active" data-layout="landing">
+                    <h3>SaaS Landing</h3>
+                    <p>Modern, high-conversion homepage with hero and features.</p>
+                </div>
+                <div class="layout-card" data-layout="portfolio">
+                    <h3>Minimal Portfolio</h3>
+                    <p>Clean layout for designers and developers.</p>
+                </div>
+                <div class="layout-card" data-layout="dashboard">
+                    <h3>Admin Dashboard</h3>
+                    <p>Comprehensive interface with sidebar and widgets.</p>
+                </div>
+
+                <div class="gallery-section-title" style="margin-top: 2rem;">Components</div>
+                <div style="font-size: 0.8rem; color: #94a3b8; text-align: center; padding: 2rem; border: 1px dashed #e2e8f0; border-radius: 8px;">
+                    More page types coming soon...
+                </div>
+            </aside>
+
+            <!-- Preview: Large Viewport -->
+            <section class="preview-workspace">
+                <div id="preview-canvas" class="preview-canvas">
+                    <!-- Template content will be injected here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Core Logic -->
+    <script src="js/layouts.js"></script>
+</body>
+
+</html>
