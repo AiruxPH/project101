@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Preview - PROJECT 101</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Component Loader Script -->
+    <script src="js/loader.js" defer></script>
+</head>
+
+<body>
+    <!-- Dynamically loaded Header and Navbar -->
+    <div data-include="includes/header.html"></div>
+    <div data-include="includes/navbar.html"></div>
+
+    <main class="main-container">
+        <div class="properties-panel">
+            <!-- Sticky Header for Actions -->
+            <div class="sticky-action-header">
+                <h3>Properties</h3>
+                <button id="open-modal" class="primary-btn">Get Code</button>
+            </div>
+
+
+
+            <!-- Property Tabs Navigation -->
+            <div class="property-tabs">
+                <button class="prop-tab active" data-target="tab-element">Element</button>
+                <button class="prop-tab" data-target="tab-layout">Layout</button>
+                <button class="prop-tab" data-target="tab-typography">Typo</button>
+                <button class="prop-tab" data-target="tab-appearance">Style</button>
+                <button class="prop-tab" data-target="tab-effects">Effects</button>
+            </div>
+
+            <!-- TAB 1: Element & Content -->
+            <div id="tab-element" class="tab-content active">
+                <div class="panel-section">
+                    <h4>Element Type</h4>
+                    <div class="control-group">
+                        <label for="elementType">Tag Name</label>
+                        <select id="elementType" class="property-input-special">
+                            <option value="div">Box (div)</option>
+                            <option value="section">Section</option>
+                            <option value="article">Article</option>
+                            <option value="button">Button</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="p">Paragraph</option>
+                            <option value="a">Link (a)</option>
+                            <option value="img">Image</option>
+                            <option value="input">Input Field</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h4>Attributes</h4>
+                    <div class="control-group">
+                        <label for="elementId">ID</label>
+                        <input type="text" id="elementId" class="property-input-attr" placeholder="Optional ID">
+                    </div>
+                    <div class="control-group">
+                        <label for="elementClass">Class</label>
+                        <input type="text" id="elementClass" class="property-input-attr" placeholder="Optional Class">
+                    </div>
+                </div>
+
+                <div class="panel-section" id="section-content">
+                    <h4>Content</h4>
+                    <div class="control-group" id="text-group">
+                        <label for="innerText">Display Text</label>
+                        <input type="text" id="innerText" class="property-input-text" value="Preview Object">
+                    </div>
+                    <div class="control-group" id="src-group" style="display:none;">
+                        <label for="srcAttribute">Image URL</label>
+                        <input type="text" id="srcAttribute" class="property-input-text" data-attribute="src"
+                            value="https://picsum.photos/200">
+                    </div>
+                    <div class="control-group" id="placeholder-group" style="display:none;">
+                        <label for="placeholderAttribute">Placeholder Text</label>
+                        <input type="text" id="placeholderAttribute" class="property-input-text"
+                            data-attribute="placeholder" value="Enter text...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Layout -->
+            <div id="tab-layout" class="tab-content">
+                <div class="panel-section">
+                    <h4>Display Model</h4>
+                    <div class="control-group">
+                        <label for="display">Display</label>
+                        <select id="display" class="property-input" data-property="display">
+                            <option value="block">Block</option>
+                            <option value="inline-block">Inline Block</option>
+                            <option value="flex">Flex</option>
+                            <option value="grid">Grid</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+
+                    <!-- Flex/Grid Specifics -->
+                    <div id="flex-grid-props"
+                        style="display:none; background: #f0f4f8; padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #dce4ec;">
+                        <div class="control-group">
+                            <label for="flexDirection">Flex Direction</label>
+                            <select id="flexDirection" class="property-input" data-property="flexDirection">
+                                <option value="row">Row</option>
+                                <option value="column">Column</option>
+                                <option value="row-reverse">Row Reverse</option>
+                                <option value="column-reverse">Column Reverse</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="justifyContent">Justify Content</label>
+                            <select id="justifyContent" class="property-input" data-property="justifyContent">
+                                <option value="flex-start">Start</option>
+                                <option value="center">Center</option>
+                                <option value="flex-end">End</option>
+                                <option value="space-between">Space Between</option>
+                                <option value="space-around">Space Around</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="alignItems">Align Items</label>
+                            <select id="alignItems" class="property-input" data-property="alignItems">
+                                <option value="stretch">Stretch</option>
+                                <option value="center">Center</option>
+                                <option value="flex-start">Start</option>
+                                <option value="flex-end">End</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="gap">Gap (px)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="gap-slider" min="0" max="50" value="0" data-sync="gap">
+                                <input type="number" id="gap" class="property-input synced-input" data-property="gap"
+                                    data-unit="px" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimensions -->
+                    <div class="control-group" id="width-group">
+                        <label>Width</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="width-slider" min="0" max="800" value="200" data-sync="width">
+                            <input type="number" id="width" class="property-input synced-input" data-property="width"
+                                data-unit="px" value="200">
+                        </div>
+                    </div>
+                    <div class="control-group" id="height-group">
+                        <label>Height</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="height-slider" min="0" max="800" value="200" data-sync="height">
+                            <input type="number" id="height" class="property-input synced-input" data-property="height"
+                                data-unit="px" value="200">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Padding</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="padding-slider" min="0" max="100" value="20" data-sync="padding">
+                            <input type="number" id="padding" class="property-input synced-input"
+                                data-property="padding" data-unit="px" value="20">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Margin</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="margin-slider" min="0" max="100" value="0" data-sync="margin">
+                            <input type="number" id="margin" class="property-input synced-input" data-property="margin"
+                                data-unit="px" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Typography -->
+            <div id="tab-typography" class="tab-content">
+                <div class="panel-section">
+                    <h4>Font Settings</h4>
+                    <div class="control-group">
+                        <label for="fontFamily">Font Family</label>
+                        <select id="fontFamily" class="property-input" data-property="fontFamily">
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                            <option value="'Verdana', sans-serif">Verdana</option>
+                            <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                            <option value="'Impact', sans-serif">Impact</option>
+                            <option value="system-ui">System UI</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Font Size</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="fontSize-slider" min="10" max="100" value="16" data-sync="fontSize">
+                            <input type="number" id="fontSize" class="property-input synced-input"
+                                data-property="fontSize" data-unit="px" value="16">
+                        </div>
+                    </div>
+                    <div class="control-group half-width">
+                        <label for="fontWeight">Weight</label>
+                        <select id="fontWeight" class="property-input" data-property="fontWeight">
+                            <option value="400">Normal</option>
+                            <option value="700">Bold</option>
+                            <option value="300">Light</option>
+                            <option value="900">Black</option>
+                        </select>
+                    </div>
+                    <div class="control-group half-width">
+                        <label for="textAlign">Align</label>
+                        <select id="textAlign" class="property-input" data-property="textAlign">
+                            <option value="center">Center</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                            <option value="justify">Justify</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Line Height</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="lineHeight-slider" min="1" max="3" step="0.1" value="1.5"
+                                data-sync="lineHeight">
+                            <input type="number" id="lineHeight" class="property-input synced-input"
+                                data-property="lineHeight" step="0.1" value="1.5">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="textColor">Text Color</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="textColor" class="property-input" data-property="color"
+                                value="#ffffff">
+                            <span class="color-code">#ffffff</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Appearance -->
+            <div id="tab-appearance" class="tab-content">
+                <div class="panel-section">
+                    <h4>Styling</h4>
+                    <div class="control-group">
+                        <label for="bgColor">Background Color</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="bgColor" class="property-input" data-property="backgroundColor"
+                                value="#3498db">
+                            <span class="color-code">#3498db</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="border">Border Style</label>
+                        <select id="border" class="property-input" data-property="border">
+                            <option value="none">None</option>
+                            <option value="1px solid #000">1px Solid Black</option>
+                            <option value="2px solid #000">2px Solid Black</option>
+                            <option value="2px dashed #666">2px Dashed Grey</option>
+                            <option value="3px dotted #333">3px Dotted Dark</option>
+                            <option value="5px double #000">5px Double</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Border Radius</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="borderRadius-slider" min="0" max="100" value="0"
+                                data-sync="borderRadius">
+                            <input type="number" id="borderRadius" class="property-input synced-input"
+                                data-property="borderRadius" data-unit="px" value="0">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="cursor">Cursor</label>
+                        <select id="cursor" class="property-input" data-property="cursor">
+                            <option value="default">Default</option>
+                            <option value="pointer">Pointer</option>
+                            <option value="text">Text</option>
+                            <option value="not-allowed">Not Allowed</option>
+                            <option value="wait">Wait</option>
+                            <option value="grab">Grab</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: EFFECTS (New Granular Controls) -->
+            <div id="tab-effects" class="tab-content">
+                <!-- Interaction Builder (Trigger -> Effect) -->
+                <div class="interaction-builder"
+                    style="background: #e9ecef; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <h4 style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.95rem; color: #2c3e50;">Add
+                        Interaction</h4>
+
+                    <div class="control-group">
+                        <label for="interactionTrigger">When (Trigger)</label>
+                        <select id="interactionTrigger" class="property-input">
+                            <option value="hover">Mouse Over (Hover)</option>
+                            <option value="active">Click (Active)</option>
+                            <option value="always">Always (Loop)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="interactionEffect">Do (Effect)</label>
+                        <select id="interactionEffect" class="property-input">
+                            <option value="grow">Grow (Scale Up)</option>
+                            <option value="shrink">Shrink (Scale Down)</option>
+                            <option value="rotate">Rotate</option>
+                            <option value="lift">Lift Up</option>
+                            <option value="shake">Shake</option>
+                            <option value="pulse">Pulse</option>
+                            <option value="rainbow">Rainbow Colors</option>
+                            <option value="glow">Glow Effect</option>
+                        </select>
+                    </div>
+
+                    <button id="addInteractionBtn" class="primary-btn" style="width: 100%; margin-top: 0.5rem;">+ Add
+                        Effect</button>
+                    <div id="interactionFeedback"
+                        style="color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2em;"></div>
+
+                    <!-- Active Interactions List -->
+                    <div id="activeInteractionsList"
+                        style="margin-top: 1rem; border-top: 1px solid #ced4da; padding-top: 0.8rem;">
+                        <label
+                            style="font-size: 0.8rem; color: #666; font-weight: 600; display: block; margin-bottom: 0.5rem;">Active
+                            Interactions:</label>
+                        <div id="interaction-list-items" style="display: flex; flex-direction: column; gap: 5px;">
+                            <!-- Items will be injected here via JS -->
+                            <div class="empty-state"
+                                style="font-size: 0.8rem; color: #888; text-align: center; padding: 0.5rem; background: #fff; border-radius: 4px; border: 1px dashed #ced4da;">
+                                No interactions added.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h4>Visual Styles</h4>
+                    <div class="control-group">
+                        <label>Opacity</label>
+                        <div class="slider-input-group">
+                            <input type="range" id="opacity" class="property-input" data-property="opacity" min="0"
+                                max="1" step="0.1" value="1">
+                            <span style="font-size: 0.8rem; color: #666; width: 30px; text-align: center;">1.0</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="boxShadow">Box Shadow</label>
+                        <select id="boxShadow" class="property-input" data-property="boxShadow">
+                            <option value="none">None</option>
+                            <option value="0 2px 5px rgba(0,0,0,0.2)">Subtle Drop</option>
+                            <option value="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)">Material Shadow
+                            </option>
+                            <option value="5px 5px 0px rgba(0,0,0,1)">Hard Edge</option>
+                            <option value="inset 0 0 10px #000000">Inset Shadow</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4>Transform</h4>
+                        <label class="switch-label">
+                            <input type="checkbox" id="manualTransformInfo">
+                            <span class="slider-round"></span>
+                            <span class="label-text">Manual</span>
+                        </label>
+                    </div>
+
+                    <!-- Preset Mode -->
+                    <div id="transform-preset-mode">
+                        <div class="control-group">
+                            <label for="transform">Preset</label>
+                            <select id="transform" class="property-input" data-property="transform">
+                                <option value="none">None</option>
+                                <option value="rotate(45deg)">Rotate 45deg</option>
+                                <option value="scale(1.2)">Scale 1.2x</option>
+                                <option value="skew(20deg)">Skew 20deg</option>
+                                <option value="translate(20px, 20px)">Translate 20px</option>
+                                <option value="rotate(180deg)">Flip (Rotate 180)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Manual Mode -->
+                    <div id="transform-manual-mode"
+                        style="display: none; background: #f9f9f9; padding: 10px; border: 1px dashed #ccc; border-radius: 4px;">
+                        <div class="control-group">
+                            <label>Rotate (deg)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="rotate-slider" min="0" max="360" value="0"
+                                    class="manual-transform">
+                                <input type="number" id="rotate-val" value="0" class="manual-transform synced-input-sm">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Scale (x)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="scale-slider" min="0.1" max="3" step="0.1" value="1"
+                                    class="manual-transform">
+                                <input type="number" id="scale-val" value="1" step="0.1"
+                                    class="manual-transform synced-input-sm">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Skew X (deg)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="skewX-slider" min="-90" max="90" value="0"
+                                    class="manual-transform">
+                                <input type="number" id="skewX-val" value="0" class="manual-transform synced-input-sm">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Translate X (px)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="translateX-slider" min="-100" max="100" value="0"
+                                    class="manual-transform">
+                                <input type="number" id="translateX-val" value="0"
+                                    class="manual-transform synced-input-sm">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Translate Y (px)</label>
+                            <div class="slider-input-group">
+                                <input type="range" id="translateY-slider" min="-100" max="100" value="0"
+                                    class="manual-transform">
+                                <input type="number" id="translateY-val" value="0"
+                                    class="manual-transform synced-input-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h4>Transition</h4>
+                    <div class="control-group">
+                        <label for="transition">Preset</label>
+                        <select id="transition" class="property-input" data-property="transition">
+                            <option value="none">None</option>
+                            <option value="all 0.3s ease">All 0.3s Ease</option>
+                            <option value="all 0.5s linear">All 0.5s Linear</option>
+                            <option value="all 1s ease-in-out">All 1s Smooth</option>
+                            <option value="transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)">Bouncy Zoom</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="preview-panel">
+            <button id="theme-toggle" class="theme-btn" title="Toggle Dark/Light Mode">🌙</button>
+            <div id="preview-container">
+                <div id="preview-box">
+                    Preview Object
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- VS Code Style Modal -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content vs-code-theme">
+            <div class="modal-header">
+                <span class="modal-title">Generated Code</span>
+                <span class="close-modal">&times;</span>
+            </div>
+
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="html">HTML</button>
+                <button class="tab-btn" data-tab="css">CSS</button>
+                <button class="tab-btn" data-tab="js">JavaScript</button>
+            </div>
+
+            <div class="code-area">
+                <div id="code-html" class="code-content active"></div>
+                <div id="code-css" class="code-content"></div>
+                <div id="code-js" class="code-content"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="copy-btn">Copy Active Tab</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+    <!-- Dynamically loaded Footer -->
+    <div data-include="includes/footer.html"></div>
+</body>
+
+</html>
