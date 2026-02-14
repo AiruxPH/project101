@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Layout Builder - PROJECT 101</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/layouts.css">
+    <link rel="stylesheet" href="css/builder.css">
+    <!-- Component Loader Script -->
+    <script src="../../js/loader.js" defer></script>
+</head>
+
+<body>
+    <!-- Dynamically loaded Header and Navbar -->
+    <div data-include="../../includes/header.html"></div>
+    <div data-include="../../includes/navbar.html"></div>
+
+    <div class="builder-container">
+        <!-- Sidebar -->
+        <aside class="builder-sidebar">
+            <div class="sidebar-header">
+                <h2>Component Library</h2>
+            </div>
+            <div class="component-library">
+                <div class="library-section">
+                    <h3>Navigation</h3>
+                    <div class="comp-item" data-type="navbar_simple">
+                        <div class="comp-icon"></div>
+                        <span>Simple Navbar</span>
+                    </div>
+                </div>
+
+                <div class="library-section">
+                    <h3>Hero Sections</h3>
+                    <div class="comp-item" data-type="hero_centered">
+                        <div class="comp-icon"></div>
+                        <span>Centered Hero</span>
+                    </div>
+                    <div class="comp-item" data-type="hero_split">
+                        <div class="comp-icon"></div>
+                        <span>Split Hero</span>
+                    </div>
+                </div>
+
+                <div class="library-section">
+                    <h3>Content Blocks</h3>
+                    <div class="comp-item" data-type="features_grid">
+                        <div class="comp-icon"></div>
+                        <span>Features Grid</span>
+                    </div>
+                    <div class="comp-item" data-type="content_center">
+                        <div class="comp-icon"></div>
+                        <span>Centered Text</span>
+                    </div>
+                </div>
+
+                <div class="library-section">
+                    <h3>Footers</h3>
+                    <div class="comp-item" data-type="footer_simple">
+                        <div class="comp-icon"></div>
+                        <span>Simple Footer</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Builder Interface -->
+        <main class="builder-canvas-area" style="padding-top: 80px;">
+            <div class="builder-topbar">
+                <button id="clear-canvas" class="btn btn-outline">Clear All</button>
+                <button id="export-code" class="btn btn-primary">Export HTML/CSS</button>
+            </div>
+
+            <div id="canvas-frame" class="canvas-frame">
+                <div class="empty-canvas-msg">
+                    <p>Select components from the left to start building your layout.</p>
+                </div>
+                <!-- Modular sections will be added here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals (Reusing style from layouts) -->
+    <div id="codeModal" class="modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div class="modal-content"
+            style="background:#fff; width:80%; max-width:900px; padding:2rem; border-radius:12px; position:relative;">
+            <span class="close-modal" id="close-modal"
+                style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5rem;">&times;</span>
+            <h2 style="margin-bottom: 1.5rem;">Your Custom Layout Code</h2>
+            <div class="code-container"
+                style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1.5rem; max-height:500px; overflow-y:auto;">
+                <pre><code id="exported-html"></code></pre>
+            </div>
+            <button id="copy-exported" class="btn btn-primary" style="margin-top: 1.5rem;">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/builder.js"></script>
+</body>
+
+</html>
