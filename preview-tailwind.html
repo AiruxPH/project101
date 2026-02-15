@@ -7,68 +7,13 @@
     <title>Live Preview v2 (Tailwind)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/loader.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts - Material Design Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Material Design 3 Header/Nav Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        header {
-            background: #6750A4;
-            color: #FFFFFF;
-            padding: 1rem 5%;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        nav {
-            background: #FFFBFE;
-            color: #1C1B1F;
-            padding: 0.75rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0;
-        }
-
-        nav ul li a {
-            color: #1C1B1F;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0.75rem 1.25rem;
-            display: block;
-            border-radius: 20px;
-        }
-
-        nav ul li a:hover {
-            background: #EADDFF;
-            color: #21005D;
-        }
+        /* Compatibility Styles for script.js */
 
         /* Compatibility Styles for script.js */
         @keyframes rainbow {
@@ -200,18 +145,7 @@
             border-color: #444;
         }
 
-        /* Essential Footer Styles */
-        footer {
-            background: #2c3e50;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            margin: 0;
-        }
+        /* Tab Logic Override */
 
         /* Tab Logic Override */
         .tab-content {
