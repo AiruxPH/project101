@@ -24,25 +24,35 @@ body {
 }
 
 header {
-    background: #2c3e50;
-    color: #fff;
-    padding: 0.75rem 1rem;
+    background: #e0e5ec;
+    color: #4a5568;
+    padding: 1rem 5%;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        6px 6px 12px rgba(163, 177, 198, 0.4),
+        -6px -6px 12px rgba(255, 255, 255, 0.5);
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 nav {
-    background: #34495e;
-    color: #fff;
-    padding: 0.5rem;
+    background: #e0e5ec;
+    color: #4a5568;
+    padding: 0.75rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow:
+        0 4px 8px rgba(163, 177, 198, 0.3),
+        0 -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 nav ul {
@@ -53,7 +63,7 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 nav ul li {
@@ -63,16 +73,20 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #4a5568;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    padding: 0.75rem 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    padding: 0.75rem 1.25rem;
     display: block;
+    border-radius: 12px;
 }
 
 nav ul li a:hover {
-    color: #3498db;
+    color: #667eea;
+    box-shadow:
+        inset 2px 2px 4px rgba(163, 177, 198, 0.4),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 /* Dropdown Styles */
@@ -83,20 +97,24 @@ nav ul li a:hover {
 .nav-dropdown-toggle {
     background: transparent;
     border: none;
-    color: #fff;
-    font-weight: 500;
+    color: #4a5568;
+    font-weight: 600;
     font-size: 1rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s;
     font-family: inherit;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    border-radius: 12px;
 }
 
 .nav-dropdown-toggle:hover {
-    color: #3498db;
+    color: #667eea;
+    box-shadow:
+        inset 2px 2px 4px rgba(163, 177, 198, 0.4),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .dropdown-arrow {
@@ -115,11 +133,13 @@ nav ul li a:hover {
     left: 50%;
     transform: translateX(-50%);
     min-width: 220px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
+    background: #e0e5ec;
+    border-radius: 16px;
+    box-shadow:
+        6px 6px 12px rgba(163, 177, 198, 0.5),
+        -6px -6px 12px rgba(255, 255, 255, 0.5);
+    padding: 0.75rem;
+    margin-top: 0.75rem;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -130,26 +150,28 @@ nav ul li a:hover {
 .nav-dropdown.active .nav-dropdown-menu {
     opacity: 1;
     visibility: visible;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
 }
 
 .nav-dropdown-menu li {
     display: block;
-    margin: 0;
+    margin: 0.25rem 0;
 }
 
 .nav-dropdown-menu a {
-    color: #2c3e50;
-    padding: 0.75rem 1.25rem;
+    color: #4a5568;
+    padding: 0.75rem 1rem;
     display: block;
     transition: all 0.2s;
-    border-left: 3px solid transparent;
+    border-radius: 12px;
+    font-weight: 500;
 }
 
 .nav-dropdown-menu a:hover {
-    background: #f8f9fa;
-    color: #3498db;
-    border-left-color: #3498db;
+    color: #667eea;
+    box-shadow:
+        inset 3px 3px 6px rgba(163, 177, 198, 0.4),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 }
 
 /* Active dropdown state for click support */
@@ -551,11 +573,14 @@ input:checked+.slider-round:before {
 }
 
 footer {
-    background: #2c3e50;
-    color: #bdc3c7;
+    background: #e0e5ec;
+    color: #4a5568;
     text-align: center;
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
+    padding: 2rem 5%;
+    font-size: 0.9rem;
+    box-shadow:
+        0 -4px 8px rgba(163, 177, 198, 0.3),
+        0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 footer p {
