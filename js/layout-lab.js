@@ -4,7 +4,6 @@
  */
 
 // ========== CONSTANTS ==========
-const BLOCK_COLORS = ['#3498db', '#9b59b6', '#e67e22', '#1abc9c', '#34495e'];
 const DEFAULT_GAP = 20;
 const MAX_GAP = 100;
 const MIN_GAP = 0;
@@ -103,9 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             block.setAttribute('tabindex', '0');
             block.setAttribute('aria-label', `Block ${blockCount}. Click to select and edit properties.`);
 
-            // Apply color from predefined palette
-            block.style.backgroundColor = BLOCK_COLORS[blockCount % BLOCK_COLORS.length];
-
             // Click handler
             block.onclick = (e) => {
                 e.stopPropagation();
@@ -161,12 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Setup values
         const labelInp = controls.querySelector('.child-label-input');
-        const bgInp = controls.querySelector('.child-bg-input');
         const growInp = controls.querySelector('.child-grow-input');
         const spanInp = controls.querySelector('.child-span-input');
 
         labelInp.value = selectedBlock.innerText;
-        bgInp.value = rgbToHex(selectedBlock.style.backgroundColor);
         growInp.value = selectedBlock.style.flexGrow || 0;
         spanInp.value = selectedBlock.style.gridColumn || '';
 
@@ -177,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Listeners
         labelInp.oninput = () => selectedBlock.innerText = labelInp.value;
-        bgInp.oninput = () => selectedBlock.style.backgroundColor = bgInp.value;
         growInp.oninput = () => selectedBlock.style.flexGrow = growInp.value;
         spanInp.oninput = () => selectedBlock.style.gridColumn = spanInp.value;
 
