@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const controls = document.createElement('div');
             controls.className = 'section-controls';
             controls.innerHTML = `
-                <button class="control-btn move-up" title="Move Up" aria-label="Move component up">↑</button>
-                <button class="control-btn move-down" title="Move Down" aria-label="Move component down">↓</button>
-                <button class="control-btn duplicate" title="Duplicate" aria-label="Duplicate component">⧉</button>
-                <button class="control-btn edit" title="Edit" aria-label="Edit component">⚙️</button>
-                <button class="control-btn delete" title="Remove" aria-label="Remove component">&times;</button>
+                <button class="control-btn move-up" title="Move Up" aria-label="Move component up"><i class="fa-solid fa-chevron-up"></i></button>
+                <button class="control-btn move-down" title="Move Down" aria-label="Move component down"><i class="fa-solid fa-chevron-down"></i></button>
+                <button class="control-btn duplicate" title="Duplicate" aria-label="Duplicate component"><i class="fa-solid fa-clone"></i></button>
+                <button class="control-btn edit" title="Edit" aria-label="Edit component"><i class="fa-solid fa-sliders"></i></button>
+                <button class="control-btn delete" title="Remove" aria-label="Remove component"><i class="fa-solid fa-trash-can"></i></button>
             `;
 
             wrapper.appendChild(controls);
@@ -234,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Layout - PROJECT 101</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/ef9baa832e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 ${htmlContent}
