@@ -37,6 +37,23 @@ header h1 {
     font-size: 1.75rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+header h1:hover {
+    color: #E0D1FF;
+    text-shadow:
+        0 0 10px #D0BCFF,
+        0 0 20px #D0BCFF,
+        0 0 30px #D0BCFF,
+        0 0 40px #7F67BE,
+        0 0 70px #7F67BE,
+        0 0 80px #7F67BE,
+        0 0 100px #7F67BE,
+        0 0 150px #7F67BE;
+    animation: neonPulse 1.5s ease-in-out infinite;
 }
 
 nav {
@@ -891,4 +908,33 @@ footer p {
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
     border-color: #444;
+}
+
+/* ========== NEON GLOW ANIMATION ========== */
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px #D0BCFF,
+            0 0 20px #D0BCFF,
+            0 0 30px #D0BCFF,
+            0 0 40px #7F67BE,
+            0 0 70px #7F67BE,
+            0 0 80px #7F67BE,
+            0 0 100px #7F67BE,
+            0 0 150px #7F67BE;
+    }
+
+    50% {
+        text-shadow:
+            0 0 5px #D0BCFF,
+            0 0 10px #D0BCFF,
+            0 0 15px #D0BCFF,
+            0 0 20px #7F67BE,
+            0 0 35px #7F67BE,
+            0 0 40px #7F67BE,
+            0 0 50px #7F67BE,
+            0 0 75px #7F67BE;
+    }
 }
