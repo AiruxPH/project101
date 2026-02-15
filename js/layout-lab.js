@@ -38,14 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const display = displaySelect.value;
         parent.style.display = display;
 
-        // GAP SLIDER LOGIC (Layman's Terms)
-        // 1. We get the number from the slider (e.g., "50")
-        // 2. We add "px" to it (e.g., "50px")
-        // 3. We tell the parent container: "Set your gap to 50px"
-        // 4. We also show the number on the screen so you know what you picked.
-        const currentGap = gapInput.value + 'px';
-        parent.style.gap = currentGap;
-        gapValueDisplay.innerText = currentGap;
+        // GAP SLIDER LOGIC
+        // Note: 'gap' only works in Flexbox and CSS Grid.
+        // In 'block' mode, elements follow normal flow and 'gap' has no effect.
+        const isBlock = display === 'block';
+        gapInput.disabled = isBlock;
+
+        if (isBlock) {
+            gapValueDisplay.innerText = 'N/A (Blocks use margins)';
+            gapValueDisplay.style.opacity = '0.5';
+            parent.style.gap = '';
+        } else {
+            const currentGap = gapInput.value + 'px';
+            parent.style.gap = currentGap;
+            gapValueDisplay.innerText = currentGap;
+            gapValueDisplay.style.opacity = '1';
+        }
 
 
         // Toggle Panels
