@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     columnsInput.addEventListener('input', updateParent);
     directionSelect.addEventListener('change', updateParent);
 
+    // Initial state
+    updateParent();
+
     // --- CHILD LOGIC --- //
 
     function addBlock() {

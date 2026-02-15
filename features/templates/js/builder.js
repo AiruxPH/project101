@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearBtn = document.getElementById('clear-canvas');
     const exportBtn = document.getElementById('export-code');
     const modal = document.getElementById('codeModal');
-    const closeModal = document.getElementById('close-modal');
+    const closeModal = document.getElementById('modal-close-x');
     const codeDisplay = document.getElementById('exported-html');
     const copyBtn = document.getElementById('copy-exported');
 
