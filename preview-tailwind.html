@@ -15,9 +15,10 @@
     <style>
         /* Material Design 3 Shell Adjustments for App Context */
         body {
-            height: 100vh !important;
-            min-height: 100vh !important;
-            overflow: hidden !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #FFFBFE;
         }
 
         header {
@@ -207,13 +208,13 @@
     </style>
 </head>
 
-<body class="h-screen flex flex-col overflow-hidden bg-gray-50 text-slate-800 font-sans">
+<body class="bg-gray-50 text-slate-800 font-sans">
 
     <!-- Header/Nav -->
     <div data-include="includes/header.html"></div>
     <div data-include="includes/navbar.html"></div>
 
-    <main class="flex flex-1 overflow-hidden relative">
+    <main class="flex relative">
 
         <!-- SIDEBAR (Properties) -->
         <div class="w-80 bg-white border-r border-gray-200 flex flex-col z-10 shadow-lg">
