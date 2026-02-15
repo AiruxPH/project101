@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const wrapper = document.createElement('div');
             wrapper.className = 'section-wrapper';
             wrapper.setAttribute('data-type', type);
+            wrapper.setAttribute('data-component-id', `comp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
             wrapper.setAttribute('role', 'article');
             wrapper.setAttribute('aria-label', `${components[type].name} component`);
 
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="control-btn move-up" title="Move Up" aria-label="Move component up">↑</button>
                 <button class="control-btn move-down" title="Move Down" aria-label="Move component down">↓</button>
                 <button class="control-btn duplicate" title="Duplicate" aria-label="Duplicate component">⧉</button>
+                <button class="control-btn edit" title="Edit" aria-label="Edit component">⚙️</button>
                 <button class="control-btn delete" title="Remove" aria-label="Remove component">&times;</button>
             `;
 
@@ -143,6 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 canvas.insertBefore(clone, wrapper.nextElementSibling);
+            });
+
+            controls.querySelector('.edit').addEventListener('click', () => {
+                openCustomizationPanel(wrapper);
             });
 
             controls.querySelector('.move-up').addEventListener('click', () => {
@@ -439,6 +445,153 @@ body {
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
+        }
+    });
+
+    // ========== CUSTOMIZATION PANEL ==========
+
+    const customizationPanel = document.getElementById('customization-panel');
+    const panelClose = document.getElementById('panel-close');
+    const panelContent = document.getElementById('panel-content');
+    let currentEditingComponent = null;
+
+    /**
+     * Opens the customization panel for a given component
+     */
+    function openCustomizationPanel(componentWrapper) {
+        currentEditingComponent = componentWrapper;
+        const componentType = componentWrapper.getAttribute('data-type');
+        const componentId = componentWrapper.getAttribute('data-component-id');
+
+        // Set panel title
+        document.getElementById('panel-title').textContent = `Customize: ${components[componentType].name}`;
+
+        // Generate customization form based on component type
+        panelContent.innerHTML = generateCustomizationForm(componentType, componentWrapper);
+
+        // Show panel
+        customizationPanel.classList.add('active');
+
+        // Attach event listeners to form elements
+        attachCustomizationListeners(componentType, componentWrapper);
+    }
+
+    /**
+     * Generates customization form HTML based on component type
+     */
+    function generateCustomizationForm(type, wrapper) {
+        switch (type) {
+            case 'navbar_simple':
+                return generateNavbarForm(wrapper);
+            // Add more cases for other components
+            default:
+                return '<p style="color: #64748b;">Customization for this component is coming soon!</p>';
+        }
+    }
+
+    /**
+     * Generates form for navbar customization
+     */
+    function generateNavbarForm(wrapper) {
+        const logo = wrapper.querySelector('.tmp-logo')?.textContent || 'VELOCITY';
+        const navLinks = Array.from(wrapper.querySelectorAll('.tmp-nav-links a')).map(a => a.textContent);
+
+        return `
+            <div class="form-group">
+                <label>Logo Text</label>
+                <input type="text" id="navbar-logo" class="form-control" value="${logo}">
+            </div>
+            
+            <div class="form-group">
+                <label>Navigation Links</label>
+                <div id="nav-links-list" class="list-editor">
+                    ${navLinks.map((link, index) => `
+                        <div class="list-item" data-index="${index}">
+                            <input type="text" class="form-control" value="${link}" data-link-index="${index}">
+                            <button class="btn-remove" data-index="${index}">×</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <button id="add-nav-link" class="btn btn-outline btn-sm">+ Add Link</button>
+            </div>
+        `;
+    }
+
+    /**
+     * Attaches event listeners to customization form elements
+     */
+    function attachCustomizationListeners(type, wrapper) {
+        if (type === 'navbar_simple') {
+            // Logo text input
+            const logoInput = document.getElementById('navbar-logo');
+            if (logoInput) {
+                logoInput.addEventListener('input', (e) => {
+                    const logoEl = wrapper.querySelector('.tmp-logo');
+                    if (logoEl) logoEl.textContent = e.target.value;
+                });
+            }
+
+            // Nav link inputs
+            const linkInputs = document.querySelectorAll('[data-link-index]');
+            linkInputs.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-link-index'));
+                    const links = wrapper.querySelectorAll('.tmp-nav-links a');
+                    if (links[index]) {
+                        links[index].textContent = e.target.value;
+                    }
+                });
+            });
+
+            // Remove link buttons
+            const removeButtons = document.querySelectorAll('.btn-remove');
+            removeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    const links = wrapper.querySelectorAll('.tmp-nav-links li');
+                    if (links[index]) {
+                        links[index].remove();
+                        // Regenerate form
+                        panelContent.innerHTML = generateCustomizationForm(type, wrapper);
+                        attachCustomizationListeners(type, wrapper);
+                    }
+                });
+            });
+
+            // Add link button
+            const addLinkBtn = document.getElementById('add-nav-link');
+            if (addLinkBtn) {
+                addLinkBtn.addEventListener('click', () => {
+                    const navList = wrapper.querySelector('.tmp-nav-links');
+                    if (navList) {
+                        const newLi = document.createElement('li');
+                        const newLink = document.createElement('a');
+                        newLink.href = '#';
+                        newLink.textContent = 'New Link';
+                        newLi.appendChild(newLink);
+                        navList.appendChild(newLi);
+                        // Regenerate form
+                        panelContent.innerHTML = generateCustomizationForm(type, wrapper);
+                        attachCustomizationListeners(type, wrapper);
+                    }
+                });
+            }
+        }
+    }
+
+    // Close panel
+    if (panelClose) {
+        panelClose.addEventListener('click', () => {
+            customizationPanel.classList.remove('active');
+            currentEditingComponent = null;
+        });
+    }
+
+    // Close panel when clicking outside
+    customizationPanel?.addEventListener('click', (e) => {
+        if (e.target === customizationPanel) {
+            customizationPanel.classList.remove('active');
+            currentEditingComponent = null;
         }
     });
 });
