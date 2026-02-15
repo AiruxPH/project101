@@ -85,7 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(dynamicStyle);
 
 
-    // --- 1. Interaction Logic --- //
+    // --- DATA STORES & STORAGE --- //
+    const STORAGE_KEY = 'project101_design_tailwind';
+
+    function saveProject() {
+        const projectData = {
+            baseStyles: baseStyles,
+            manualTransformData: manualTransformData,
+            interactions: interactions
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(projectData));
+    }
 
     // Effect Definitions (Structured for Merging)
     const effectMap = {
@@ -125,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderInteractionsList();
         updatePreview();
+        saveProject();
     });
 
     function renderInteractionsList() {
@@ -153,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 interactions = interactions.filter(i => i.id !== id);
                 renderInteractionsList();
                 updatePreview();
+                saveProject();
             });
         });
     }
@@ -161,6 +173,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load inputs from baseStyles
     function loadInputs() {
+        // Load from storage if available
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                const projectData = JSON.parse(saved);
+                if (projectData.baseStyles) baseStyles = projectData.baseStyles;
+                if (projectData.manualTransformData) manualTransformData = projectData.manualTransformData;
+                if (projectData.interactions) interactions = projectData.interactions;
+
+                renderInteractionsList();
+            } catch (e) {
+                console.error("Failed to parse saved design:", e);
+            }
+        }
+
         inputs.forEach(input => {
             const prop = input.getAttribute('data-property');
             if (prop && baseStyles[prop]) {
@@ -248,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             updatePreview();
+            saveProject();
         }
     }
 
@@ -275,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updatePreview();
+        saveProject();
     }
 
     // --- 3. Preview & CSS Generation --- //

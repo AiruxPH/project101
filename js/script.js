@@ -85,7 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(dynamicStyle);
 
 
-    // --- 1. Interaction Logic --- //
+    // --- DATA STORES & STORAGE --- //
+    const STORAGE_KEY = 'project101_design';
+
+    function saveProject() {
+        const projectData = {
+            baseStyles: baseStyles,
+            manualTransformData: manualTransformData,
+            interactions: interactions
+        };
+        // JSON.stringify turns our organized objects into a single string "text message" for storage
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(projectData));
+    }
 
     // Effect Definitions (Structured for Merging)
     const effectMap = {
@@ -125,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderInteractionsList();
         updatePreview();
+        saveProject(); // Auto-save on adding interaction
     });
 
     function renderInteractionsList() {
@@ -153,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 interactions = interactions.filter(i => i.id !== id);
                 renderInteractionsList();
                 updatePreview();
+                saveProject(); // Auto-save on removing interaction
             });
         });
     }
@@ -161,6 +174,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load inputs from baseStyles
     function loadInputs() {
+        // Load from storage if available
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                // JSON.parse takes the stored string and turns it back into a usable Lego-like data structure
+                const projectData = JSON.parse(saved);
+                if (projectData.baseStyles) baseStyles = projectData.baseStyles;
+                if (projectData.manualTransformData) manualTransformData = projectData.manualTransformData;
+                if (projectData.interactions) interactions = projectData.interactions;
+
+                // Refresh the interaction list UI
+                renderInteractionsList();
+            } catch (e) {
+                console.error("Failed to parse saved design:", e);
+            }
+        }
+
         inputs.forEach(input => {
             const prop = input.getAttribute('data-property');
             if (prop && baseStyles[prop]) {
@@ -248,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             updatePreview();
+            saveProject(); // Auto-save on property change
         }
     }
 
@@ -275,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updatePreview();
+        saveProject(); // Auto-save on manual transform
     }
 
     // --- 3. Preview & CSS Generation --- //
