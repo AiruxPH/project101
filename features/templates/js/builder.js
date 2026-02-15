@@ -155,7 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             controls.querySelector('.edit').addEventListener('click', () => {
-                openCustomizationPanel(wrapper);
+                console.log('Edit button clicked!', wrapper);
+                console.log('openCustomizationPanel function exists?', typeof openCustomizationPanel);
+                if (typeof openCustomizationPanel === 'function') {
+                    openCustomizationPanel(wrapper);
+                } else {
+                    console.error('openCustomizationPanel is not defined!');
+                }
             });
 
             controls.querySelector('.move-up').addEventListener('click', () => {

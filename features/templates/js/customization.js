@@ -38,11 +38,16 @@ let currentEditingComponent = null;
  * @param {HTMLElement} componentWrapper - The component wrapper element
  */
 function openCustomizationPanel(componentWrapper) {
+    console.log('openCustomizationPanel called!', componentWrapper);
     currentEditingComponent = componentWrapper;
     const componentType = componentWrapper.getAttribute('data-type');
     const componentId = componentWrapper.getAttribute('data-component-id');
     const customizationPanel = document.getElementById('customization-panel');
     const panelContent = document.getElementById('panel-content');
+
+    console.log('Component type:', componentType);
+    console.log('Panel element:', customizationPanel);
+    console.log('Panel content element:', panelContent);
 
     // Set panel title
     document.getElementById('panel-title').textContent = `Customize: ${componentsData[componentType].name}`;
@@ -51,7 +56,9 @@ function openCustomizationPanel(componentWrapper) {
     panelContent.innerHTML = generateCustomizationForm(componentType, componentWrapper);
 
     // Show panel
+    console.log('Adding active class to panel...');
     customizationPanel.classList.add('active');
+    console.log('Panel classes:', customizationPanel.className);
 
     // Attach event listeners to form elements
     attachCustomizationListeners(componentType, componentWrapper);
