@@ -112,8 +112,8 @@
 .section-wrapper:hover {
     border: 2px dashed #3b82f6;
     background: rgba(59, 130, 246, 0.02);
-    z-index: 100;
-    /* Ensure hovered section appears above adjacent sections */
+    z-index: 50;
+    /* Ensure hovered section appears above adjacent sections but below main navbar (1000) */
 }
 
 .section-controls {
