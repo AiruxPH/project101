@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             components = data;
             console.log("Components loaded successfully:", components);
+
+            // Initialize customization system AFTER components are loaded
+            if (typeof initCustomization === 'function') {
+                initCustomization(components);
+            }
+
             // Now that components are loaded, we can enable the sidebar clicks
             initSidebar();
         })
@@ -460,16 +466,4 @@ body {
             modal.style.display = 'none';
         }
     });
-
-    // ========== CUSTOMIZATION SYSTEM INITIALIZATION ==========
-    // Initialize customization system (defined in customization.js)
-    console.log('Initializing customization system...');
-    console.log('Components object:', components);
-    console.log('initCustomization function exists?', typeof initCustomization);
-    if (typeof initCustomization === 'function') {
-        initCustomization(components);
-        console.log('Customization system initialized!');
-    } else {
-        console.error('initCustomization function not found!');
-    }
 });
