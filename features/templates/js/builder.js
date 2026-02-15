@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             controls.querySelector('.duplicate').addEventListener('click', () => {
                 const clone = wrapper.cloneNode(true);
+                // Generate new unique ID for cloned component
+                clone.setAttribute('data-component-id', `comp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+
                 // Re-attach event listeners to cloned controls
                 const clonedControls = clone.querySelector('.section-controls');
 
@@ -130,6 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 clonedControls.querySelector('.duplicate').addEventListener('click', () => {
                     addComponent(type); // Recursively add another copy
+                });
+
+                clonedControls.querySelector('.edit').addEventListener('click', () => {
+                    openCustomizationPanel(clone);
                 });
 
                 clonedControls.querySelector('.move-up').addEventListener('click', () => {
