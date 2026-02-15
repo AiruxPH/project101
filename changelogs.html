@@ -19,6 +19,58 @@
         <div style="max-width: 800px; margin: 0 auto;">
             <h1>Project Changelogs</h1>
             <!--Put here all the changes you made in the project.-->
+            <div class="version">
+                <h2>Version 3.0.0</h2>
+                <p class="date">February 15, 2026 (Material Design 3 Evolution)</p>
+                <ul>
+                    <li><strong>Site-Wide Material Design 3 Overhaul</strong>: Replaced the previous Neumorphic design
+                        with a modern, professional, and accessible MD3 system across the entire project.</li>
+                    <li><strong>Global Theme Synchronization</strong>: Unified the site's look through a reconstructed
+                        <code>style.css</code>:
+                        <ul>
+                            <li><strong>Primary Color Palette</strong>: Adopted the elegant Purple shell (#6750A4) for
+                                all
+                                headers and primary actions.</li>
+                            <li><strong>MD3 Surface System</strong>: Implemented proper surface tones (#FFFBFE) and
+                                light-gray backgrounds for better readability.</li>
+                            <li><strong>Roboto Typography</strong>: Integrated Google Fonts' Roboto stack site-wide for
+                                a premium, modern feel.</li>
+                            <li><strong>Elevation & Shadows</strong>: Added 4-level elevation system with MD3 shadows
+                                for
+                                depth and interaction feedback.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Layout Lab (v2.0)</strong>:
+                        <ul>
+                            <li><strong>MD3 UI Redesign</strong>: Completely restyled the lab controls, sidebar, and
+                                interface to match the MD3 aesthetic.</li>
+                            <li><strong>Structure First</strong>: Normalized block styles to neutral gray (#E7E0EC) to
+                                help users focus on layout architecture rather than color theory.</li>
+                            <li><strong>Smart Controls</strong>: Added automatic "Gap" disabling when using Block
+                                display mode and improved interaction feedback.</li>
+                            <li><strong>Tool Upgrades</strong>: Implemented "Copy to Clipboard" for both HTML/CSS and
+                                streamlined the block deletion process.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Preview v2 Optimization</strong>:
+                        <ul>
+                            <li><strong>Layout Restoration</strong>: Fixed critical structural bugs in
+                                <code>preview-tailwind.html</code> that caused layout "scattering" by restoring missing
+                                tags and balancing the DOM.
+                            </li>
+                            <li><strong>Slim Shell Integration</strong>: Tailored the MD3 header and nav to be slimmer
+                                for high-density app environments, maximizing usable workspace.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Bug Fixes & Polish</strong>:
+                        <ul>
+                            <li>Fixed non-functional dropdown menus in the global stylesheet.</li>
+                            <li>Corrected nav link hover states and border-radius inconsistencies.</li>
+                            <li>Normalized tag balance across dynamic includes.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
             <div class="version">
                 <h2>Version 2.3.0</h2>
@@ -52,13 +104,15 @@
                         animations, form controls, and context-specific options for each component type.</li>
                     <li><strong>Code Architecture Improvement</strong>: Separated all customization logic into dedicated
                         <code>customization.js</code> file (530+ lines) for better maintainability and future
-                        extensibility.</li>
+                        extensibility.
+                    </li>
                     <li><strong>Bug Fixes</strong>:
                         <ul>
                             <li>Fixed timing issue where <code>initCustomization()</code> was called before
                                 components.json finished loading, causing undefined errors</li>
                             <li>Fixed input box overflow in customization panel by adding
-                                <code>box-sizing: border-box</code> to form controls</li>
+                                <code>box-sizing: border-box</code> to form controls
+                            </li>
                             <li>Added unique component IDs (<code>data-component-id</code>) for proper tracking of
                                 duplicated components</li>
                             <li>Fixed edit button not working on duplicated components by adding event listeners to
