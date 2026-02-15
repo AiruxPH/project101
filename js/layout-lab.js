@@ -1,5 +1,15 @@
-// layout-lab.js - Parent/Child Layout Explorer
+/**
+ * layout-lab.js - Parent/Child Layout Explorer
+ * Interactive tool for experimenting with CSS Flexbox and Grid layouts
+ */
 
+// ========== CONSTANTS ==========
+const BLOCK_COLORS = ['#3498db', '#9b59b6', '#e67e22', '#1abc9c', '#34495e'];
+const DEFAULT_GAP = 20;
+const MAX_GAP = 100;
+const MIN_GAP = 0;
+
+// ========== MAIN APPLICATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     const parent = document.getElementById('parent-container');
     const addBtn = document.getElementById('add-block');
@@ -71,34 +81,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CHILD LOGIC --- //
 
+    /**
+     * Adds a new block to the parent container
+     */
     function addBlock() {
-        blockCount++;
-        const block = document.createElement('div');
-        block.className = 'lab-block';
-        block.id = `block-${blockCount}`;
-        block.innerText = `Block ${blockCount}`;
+        try {
+            blockCount++;
+            const block = document.createElement('div');
+            block.className = 'lab-block';
+            block.id = `block-${blockCount}`;
+            block.innerText = `Block ${blockCount}`;
+            block.setAttribute('role', 'button');
+            block.setAttribute('tabindex', '0');
+            block.setAttribute('aria-label', `Block ${blockCount}. Click to select and edit properties.`);
 
-        // Random subtle bg
-        const colors = ['#3498db', '#9b59b6', '#e67e22', '#1abc9c', '#34495e'];
-        block.style.backgroundColor = colors[blockCount % colors.length];
+            // Apply color from predefined palette
+            block.style.backgroundColor = BLOCK_COLORS[blockCount % BLOCK_COLORS.length];
 
-        block.onclick = (e) => {
-            e.stopPropagation();
-            selectBlock(block);
-        };
+            // Click handler
+            block.onclick = (e) => {
+                e.stopPropagation();
+                selectBlock(block);
+            };
 
-        parent.appendChild(block);
+            // Keyboard accessibility
+            block.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectBlock(block);
+                }
+            };
+
+            parent.appendChild(block);
+        } catch (error) {
+            console.error('Error adding block:', error);
+        }
     }
 
+    /**
+     * Selects a block and displays its controls
+     * @param {HTMLElement} el - The block element to select
+     */
     function selectBlock(el) {
-        if (selectedBlock) selectedBlock.classList.remove('active');
-        selectedBlock = el;
-        selectedBlock.classList.add('active');
+        if (!el) {
+            console.warn('Attempted to select null or undefined block');
+            return;
+        }
 
-        // Show delete button
-        deleteBtn.style.display = 'block';
+        try {
+            if (selectedBlock) {
+                selectedBlock.classList.remove('active');
+                selectedBlock.setAttribute('aria-selected', 'false');
+            }
+            selectedBlock = el;
+            selectedBlock.classList.add('active');
+            selectedBlock.setAttribute('aria-selected', 'true');
 
-        renderChildControls();
+            // Show delete button
+            deleteBtn.style.display = 'block';
+
+            renderChildControls();
+        } catch (error) {
+            console.error('Error selecting block:', error);
+        }
     }
 
     function renderChildControls() {
@@ -177,13 +222,32 @@ ${childCode}</div>`;
         });
     });
 
-    // Helper: Component to Hex
+    /**
+     * Converts RGB color string to hexadecimal format
+     * @param {string} rgb - RGB color string (e.g., "rgb(52, 152, 219)")
+     * @returns {string} Hexadecimal color code
+     */
     function rgbToHex(rgb) {
-        if (!rgb) return '#3498db';
+        // Default fallback color
+        const defaultColor = '#3498db';
+
+        if (!rgb || typeof rgb !== 'string') return defaultColor;
         if (rgb.startsWith('#')) return rgb;
-        const match = rgb.match(/\d+/g);
-        if (!match) return '#3498db';
-        const [r, g, b] = match;
-        return "#" + ((1 << 24) + (parseInt(r) << 16) + (parseInt(g) << 8) + parseInt(b)).toString(16).slice(1);
+
+        try {
+            const match = rgb.match(/\d+/g);
+            if (!match || match.length < 3) return defaultColor;
+
+            const [r, g, b] = match.map(num => {
+                const parsed = parseInt(num, 10);
+                // Validate RGB values are in valid range (0-255)
+                return isNaN(parsed) ? 0 : Math.max(0, Math.min(255, parsed));
+            });
+
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        } catch (error) {
+            console.error('Error converting RGB to Hex:', error);
+            return defaultColor;
+        }
     }
 });

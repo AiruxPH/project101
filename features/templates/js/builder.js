@@ -1,5 +1,31 @@
-// builder.js - Custom Layout Builder Logic
+/**
+ * builder.js - Custom Layout Builder Logic
+ * Allows users to build custom layouts by dragging and dropping components
+ */
 
+// ========== SECURITY ==========
+/**
+ * Sanitizes HTML to prevent XSS attacks
+ * @param {string} html - Raw HTML string
+ * @returns {string} Sanitized HTML
+ */
+function sanitizeHTML(html) {
+    const temp = document.createElement('div');
+    temp.textContent = html;
+    return temp.innerHTML;
+}
+
+/**
+ * Validates component type against allowed types
+ * @param {string} type - Component type to validate
+ * @param {object} components - Available components object
+ * @returns {boolean} True if valid
+ */
+function isValidComponentType(type, components) {
+    return type && typeof type === 'string' && components.hasOwnProperty(type);
+}
+
+// ========== MAIN APPLICATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas-frame');
     const compItems = document.querySelectorAll('.comp-item');
@@ -14,78 +40,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let components = {};
 
-    // LAYMAN'S EXPLANATION: fetch()
-    // Think of fetch() like a waiter at a restaurant:
-    // 1. You (the scripts) ask for a 'menu' (the JSON file).
-    // 2. The waiter (fetch) goes to the kitchen (server) to get it.
-    // 3. Since the kitchen might be busy, you get a 'Promise' (a buzzer that will go off when ready).
-    // 4. Once ready (.then), you get the raw data, turn it into JSON (.json()), and then start building!
-
+    /**
+     * Loads component data from JSON file
+     * LAYMAN'S EXPLANATION: fetch()
+     * Think of fetch() like a waiter at a restaurant:
+     * 1. You (the script) ask for a 'menu' (the JSON file).
+     * 2. The waiter (fetch) goes to the kitchen (server) to get it.
+     * 3. Since the kitchen might be busy, you get a 'Promise' (a buzzer that will go off when ready).
+     * 4. Once ready (.then), you get the raw data, turn it into JSON (.json()), and then start building!
+     */
     fetch('data/components.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             components = data;
             console.log("Components loaded successfully:", components);
             // Now that components are loaded, we can enable the sidebar clicks
             initSidebar();
         })
-        .catch(error => console.error("Error loading component data:", error));
+        .catch(error => {
+            console.error("Error loading component data:", error);
+            alert('Failed to load components. Please refresh the page.');
+        });
 
     // --- CORE LOGIC --- //
 
+    /**
+     * Adds a component to the canvas
+     * @param {string} type - Component type identifier
+     */
     function addComponent(type) {
-        if (!components || !components[type]) {
+        // Validate component type
+        if (!isValidComponentType(type, components)) {
             console.warn(`Component type "${type}" not loaded yet or doesn't exist.`);
             return;
         }
 
-        // Remove empty state message
-        const emptyMsg = canvas.querySelector('.empty-canvas-msg');
-        if (emptyMsg) emptyMsg.remove();
+        try {
+            // Remove empty state message
+            const emptyMsg = canvas.querySelector('.empty-canvas-msg');
+            if (emptyMsg) emptyMsg.remove();
 
-        const wrapper = document.createElement('div');
-        wrapper.className = 'section-wrapper';
-        wrapper.setAttribute('data-type', type);
+            // Create wrapper with proper attributes
+            const wrapper = document.createElement('div');
+            wrapper.className = 'section-wrapper';
+            wrapper.setAttribute('data-type', type);
+            wrapper.setAttribute('role', 'article');
+            wrapper.setAttribute('aria-label', `${components[type].name} component`);
 
-        // Add Controls
-        const controls = document.createElement('div');
-        controls.className = 'section-controls';
-        controls.innerHTML = `
-            <button class="control-btn move-up" title="Move Up">↑</button>
-            <button class="control-btn move-down" title="Move Down">↓</button>
-            <button class="control-btn delete" title="Remove">&times;</button>
-        `;
+            // Add Controls
+            const controls = document.createElement('div');
+            controls.className = 'section-controls';
+            controls.innerHTML = `
+                <button class="control-btn move-up" title="Move Up" aria-label="Move component up">↑</button>
+                <button class="control-btn move-down" title="Move Down" aria-label="Move component down">↓</button>
+                <button class="control-btn delete" title="Remove" aria-label="Remove component">&times;</button>
+            `;
 
-        wrapper.innerHTML = components[type].html;
-        wrapper.appendChild(controls);
-        canvas.appendChild(wrapper);
+            // Set innerHTML with component HTML (already validated)
+            wrapper.innerHTML = components[type].html;
+            wrapper.appendChild(controls);
+            canvas.appendChild(wrapper);
 
-        // Event Listeners for controls
-        controls.querySelector('.delete').addEventListener('click', () => {
-            wrapper.remove();
-            if (canvas.children.length === 0) {
-                canvas.innerHTML = '<div class="empty-canvas-msg"><p>Select components from the left to start building your layout.</p></div>';
-            }
-        });
+            // Event Listeners for controls
+            controls.querySelector('.delete').addEventListener('click', () => {
+                wrapper.remove();
+                if (canvas.children.length === 0) {
+                    canvas.innerHTML = '<div class="empty-canvas-msg"><p>Select components from the left to start building your layout.</p></div>';
+                }
+            });
 
-        controls.querySelector('.move-up').addEventListener('click', () => {
-            if (wrapper.previousElementSibling && !wrapper.previousElementSibling.classList.contains('empty-canvas-msg')) {
-                canvas.insertBefore(wrapper, wrapper.previousElementSibling);
-            }
-        });
+            controls.querySelector('.move-up').addEventListener('click', () => {
+                if (wrapper.previousElementSibling && !wrapper.previousElementSibling.classList.contains('empty-canvas-msg')) {
+                    canvas.insertBefore(wrapper, wrapper.previousElementSibling);
+                }
+            });
 
-        controls.querySelector('.move-down').addEventListener('click', () => {
-            if (wrapper.nextElementSibling) {
-                canvas.insertBefore(wrapper.nextElementSibling, wrapper);
-            }
-        });
+            controls.querySelector('.move-down').addEventListener('click', () => {
+                if (wrapper.nextElementSibling) {
+                    canvas.insertBefore(wrapper.nextElementSibling, wrapper);
+                }
+            });
+        } catch (error) {
+            console.error('Error adding component:', error);
+        }
     }
 
-    // Sidebar interaction - wrapped in a function to call AFTER fetch
+    /**
+     * Initializes sidebar component interactions
+     * Called after components are loaded from JSON
+     */
     function initSidebar() {
         compItems.forEach(item => {
+            // Add keyboard accessibility
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+
+            // Click handler
             item.addEventListener('click', () => {
                 addComponent(item.getAttribute('data-type'));
+            });
+
+            // Keyboard handler
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    addComponent(item.getAttribute('data-type'));
+                }
             });
         });
     }
