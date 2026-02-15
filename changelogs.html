@@ -107,354 +107,426 @@
                 </div>
 
                 <!-- Version 3.0.0 -->
-                <h2>Version 3.0.0</h2>
-                <p class="date">February 15, 2026 (Material Design 3 Evolution)</p>
-                <ul>
-                    <li><strong>Site-Wide Material Design 3 Overhaul</strong>: Replaced the previous Neumorphic design
-                        with a modern, professional, and accessible MD3 system across the entire project.</li>
-                    <li><strong>Global Theme Synchronization</strong>: Unified the site's look through a reconstructed
-                        <code>style.css</code>:
-                        <ul>
-                            <li><strong>Primary Color Palette</strong>: Adopted the elegant Purple shell (#6750A4) for
-                                all
-                                headers and primary actions.</li>
-                            <li><strong>MD3 Surface System</strong>: Implemented proper surface tones (#FFFBFE) and
-                                light-gray backgrounds for better readability.</li>
-                            <li><strong>Roboto Typography</strong>: Integrated Google Fonts' Roboto stack site-wide for
-                                a premium, modern feel.</li>
-                            <li><strong>Elevation & Shadows</strong>: Added 4-level elevation system with MD3 shadows
-                                for
-                                depth and interaction feedback.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Layout Lab (v2.0)</strong>:
-                        <ul>
-                            <li><strong>MD3 UI Redesign</strong>: Completely restyled the lab controls, sidebar, and
-                                interface to match the MD3 aesthetic.</li>
-                            <li><strong>Structure First</strong>: Normalized block styles to neutral gray (#E7E0EC) to
-                                help users focus on layout architecture rather than color theory.</li>
-                            <li><strong>Smart Controls</strong>: Added automatic "Gap" disabling when using Block
-                                display mode and improved interaction feedback.</li>
-                            <li><strong>Tool Upgrades</strong>: Implemented "Copy to Clipboard" for both HTML/CSS and
-                                streamlined the block deletion process.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Preview v2 Optimization</strong>:
-                        <ul>
-                            <li><strong>Layout Restoration</strong>: Fixed critical structural bugs in
-                                <code>preview-tailwind.html</code> that caused layout "scattering" by restoring missing
-                                tags and balancing the DOM.
-                            </li>
-                            <li><strong>Slim Shell Integration</strong>: Tailored the MD3 header and nav to be slimmer
-                                for high-density app environments, maximizing usable workspace.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Bug Fixes & Polish</strong>:
-                        <ul>
-                            <li>Fixed non-functional dropdown menus in the global stylesheet.</li>
-                            <li>Corrected nav link hover states and border-radius inconsistencies.</li>
-                            <li>Normalized tag balance across dynamic includes.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                <div class="version-card" data-version-type="major">
+                    <div class="timeline-node">
+                        <span class="version-number">3.0.0</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h2>Version 3.0.0</h2>
+                            <p class="release-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                February 15, 2026
+                            </p>
+                            <span class="release-badge">Material Design 3 Evolution</span>
+                        </div>
+                        <div class="changes-list">
+                            <div class="change-item" data-type="ui">
+                                <i class="fa-solid fa-palette"></i>
+                                <div class="change-content">
+                                    <strong>Site-Wide Material Design 3 Overhaul</strong>: Replaced the previous
+                                    Neumorphic design with a modern, professional, and accessible MD3 system across the
+                                    entire project.
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="ui">
+                                <i class="fa-solid fa-swatchbook"></i>
+                                <div class="change-content">
+                                    <strong>Global Theme Synchronization</strong>: Unified the site's look through a
+                                    reconstructed <code>style.css</code>:
+                                    <ul>
+                                        <li><strong>Primary Color Palette</strong>: Adopted the elegant Purple shell
+                                            (#6750A4) for all headers and primary actions.</li>
+                                        <li><strong>MD3 Surface System</strong>: Implemented proper surface tones
+                                            (#FFFBFE) and light-gray backgrounds for better readability.</li>
+                                        <li><strong>Roboto Typography</strong>: Integrated Google Fonts' Roboto stack
+                                            site-wide for a premium, modern feel.</li>
+                                        <li><strong>Elevation & Shadows</strong>: Added 4-level elevation system with
+                                            MD3 shadows for depth and interaction feedback.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="feature">
+                                <i class="fa-solid fa-flask"></i>
+                                <div class="change-content">
+                                    <strong>Layout Lab (v2.0)</strong>:
+                                    <ul>
+                                        <li><strong>MD3 UI Redesign</strong>: Completely restyled the lab controls,
+                                            sidebar, and interface to match the MD3 aesthetic.</li>
+                                        <li><strong>Structure First</strong>: Normalized block styles to neutral gray
+                                            (#E7E0EC) to help users focus on layout architecture rather than color
+                                            theory.</li>
+                                        <li><strong>Smart Controls</strong>: Added automatic "Gap" disabling when using
+                                            Block display mode and improved interaction feedback.</li>
+                                        <li><strong>Tool Upgrades</strong>: Implemented "Copy to Clipboard" for both
+                                            HTML/CSS and streamlined the block deletion process.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="bug">
+                                <i class="fa-solid fa-wrench"></i>
+                                <div class="change-content">
+                                    <strong>Preview v2 Optimization</strong>:
+                                    <ul>
+                                        <li><strong>Layout Restoration</strong>: Fixed critical structural bugs in
+                                            <code>preview-tailwind.html</code> that caused layout "scattering" by
+                                            restoring missing tags and balancing the DOM.
+                                        </li>
+                                        <li><strong>Slim Shell Integration</strong>: Tailored the MD3 header and nav to
+                                            be slimmer for high-density app environments, maximizing usable workspace.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="bug">
+                                <i class="fa-solid fa-bug"></i>
+                                <div class="change-content">
+                                    <strong>Bug Fixes & Polish</strong>:
+                                    <ul>
+                                        <li>Fixed non-functional dropdown menus in the global stylesheet.</li>
+                                        <li>Corrected nav link hover states and border-radius inconsistencies.</li>
+                                        <li>Normalized tag balance across dynamic includes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="version">
-                <h2>Version 2.3.0</h2>
-                <p class="date">February 15, 2026 (Component Customization System)</p>
-                <ul>
-                    <li><strong>Component Customization System</strong>: Revolutionary new feature allowing users to
-                        edit components directly in the Custom Builder with real-time preview. Click the edit button
-                        (⚙️) on any component to open the customization panel.</li>
-                    <li><strong>11 Components Fully Customizable</strong>: All components now support inline editing:
-                        <ul>
-                            <li><strong>Navbar</strong> - Logo text + navigation links with full CRUD (add/remove/edit)
-                            </li>
-                            <li><strong>Hero Sections (Centered & Split)</strong> - Heading, description, and button
-                                text</li>
-                            <li><strong>CTA Banner</strong> - Heading, description, and button text</li>
-                            <li><strong>Features Grid</strong> - Section heading and description</li>
-                            <li><strong>Testimonial Grid</strong> - Section heading</li>
-                            <li><strong>Pricing Cards</strong> - Section heading</li>
-                            <li><strong>Contact Form</strong> - Heading and description</li>
-                            <li><strong>Footer</strong> - Company name and description</li>
-                            <li><strong>Content Center</strong> - Heading and content text</li>
-                            <li><strong>Stats Counter</strong> - Placeholder (advanced editing coming in future update)
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>Real-Time Preview</strong>: All changes apply instantly to the canvas as you type - no
-                        "Apply" button needed. See your edits reflected immediately.</li>
-                    <li><strong>Button Text Editing</strong>: Hero (Centered & Split) and CTA Banner components now
-                        support editing button text for all buttons in the component.</li>
-                    <li><strong>Slide-In Customization Panel</strong>: Beautiful right-sliding panel (400px) with smooth
-                        animations, form controls, and context-specific options for each component type.</li>
-                    <li><strong>Code Architecture Improvement</strong>: Separated all customization logic into dedicated
-                        <code>customization.js</code> file (530+ lines) for better maintainability and future
-                        extensibility.
-                    </li>
-                    <li><strong>Bug Fixes</strong>:
-                        <ul>
-                            <li>Fixed timing issue where <code>initCustomization()</code> was called before
-                                components.json finished loading, causing undefined errors</li>
-                            <li>Fixed input box overflow in customization panel by adding
-                                <code>box-sizing: border-box</code> to form controls
-                            </li>
-                            <li>Added unique component IDs (<code>data-component-id</code>) for proper tracking of
-                                duplicated components</li>
-                            <li>Fixed edit button not working on duplicated components by adding event listeners to
-                                clones</li>
-                        </ul>
-                    </li>
-                    <li><strong>Enhanced User Experience</strong>: Click-outside-to-close panel, close button (×),
-                        component-specific form generation, and list editors for managing multiple items (nav links,
-                        buttons, etc.).</li>
-                </ul>
             </div>
+            <!-- End of Modern Timeline -->
 
-            <div class="version">
-                <h2>Version 2.2.0</h2>
-                <p class="date">February 15, 2026 (Template Gallery & Builder Upgrade)</p>
-                <ul>
-                    <li><strong>Template Gallery Expansion</strong>: Added 7 new professional full-page templates
-                        organized into categories:
-                        <ul>
-                            <li><strong>Authentication Pages (4)</strong>: Login, Sign Up, Forgot Password, Email
-                                Verification - all with modern gradient backgrounds and social auth options</li>
-                            <li><strong>Starter Pages (3)</strong>: 404 Error, Coming Soon, Maintenance Mode - essential
-                                utility pages for any project</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gallery Organization</strong>: Reorganized template gallery with 4 categories
-                        (Authentication, Starter Pages, Marketing, Application) for easier browsing. Total templates
-                        increased from 3 to 10.</li>
-                    <li><strong>Critical Builder Bug Fix</strong>: Fixed control buttons (delete, move up/down) not
-                        working due to innerHTML overwriting event listeners. All components can now be properly
-                        managed.</li>
-                    <li><strong>Duplicate Component Feature</strong>: Added duplicate button (⧉) to component controls,
-                        allowing users to clone any component with one click. Event listeners are properly re-attached
-                        to cloned elements.</li>
-                    <li><strong>Export Modal Upgrade</strong>: Completely redesigned export modal with tabbed interface:
-                        <ul>
-                            <li><strong>HTML Tab</strong>: Complete document structure with proper meta tags and
-                                external CSS link</li>
-                            <li><strong>CSS Tab</strong>: Production-ready stylesheet with base reset, component styles,
-                                and responsive media queries</li>
-                            <li><strong>Individual Copy Buttons</strong>: Separate copy buttons for HTML and CSS with
-                                visual feedback</li>
-                        </ul>
-                    </li>
-                    <li><strong>Control Visibility Enhancement</strong>: Improved section-controls visibility with
-                        increased z-index (9999), larger buttons (32px), enhanced styling with borders and
-                        backdrop-filter, and color-coded hover effects (red for delete, blue for duplicate).</li>
-                    <li><strong>Better UX</strong>: Added subtle background highlight on component hover, improved
-                        button styling with scale animation, and better visual feedback throughout the builder
-                        interface.</li>
-                </ul>
-            </div>
+            <!-- Older Versions Section -->
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #E7E0EC;">
+                <h2 style="text-align: center; color: #49454F; font-size: 1.5rem; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-clock-rotate-left" style="margin-right: 0.5rem;"></i>
+                    Older Versions
+                </h2>
 
-            <div class="version">
-                <h2>Version 2.1.0</h2>
-                <p class="date">February 15, 2026 (Code Quality & Accessibility Update)</p>
-                <ul>
-                    <li><strong>Security Enhancements</strong>: Implemented XSS prevention in Template Builder with HTML
-                        sanitization and input validation to protect against malicious code injection.</li>
-                    <li><strong>Accessibility Improvements</strong>: Added comprehensive ARIA labels, keyboard
-                        navigation (Enter/Space key support), and aria-live regions across Layout Lab and Template
-                        Builder for better screen reader support.</li>
-                    <li><strong>Error Handling</strong>: Added try-catch blocks, null checks, and proper error logging
-                        throughout Layout Lab and Template Builder for improved stability.</li>
-                    <li><strong>Code Organization</strong>: Extracted magic numbers to constants (BLOCK_COLORS,
-                        DEFAULT_GAP, etc.), added JSDoc documentation to all major functions, and improved code
-                        structure.</li>
-                    <li><strong>Bug Fixes</strong>: Fixed grid columns not applying immediately by adding default value
-                        "repeat(3, 1fr)" and improved validation logic.</li>
-                    <li><strong>Layout Lab Enhancement</strong>: Revamped code export feature with a VS Code-style modal
-                        displaying separate HTML and CSS tabs, replacing the previous direct-copy approach.</li>
-                    <li><strong>Performance</strong>: Optimized DOM queries by caching frequently accessed elements and
-                        improved the rgbToHex() function with better validation.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 2.3.0</h2>
+                    <p class="date">February 15, 2026 (Component Customization System)</p>
+                    <ul>
+                        <li><strong>Component Customization System</strong>: Revolutionary new feature allowing users to
+                            edit components directly in the Custom Builder with real-time preview. Click the edit button
+                            (⚙️) on any component to open the customization panel.</li>
+                        <li><strong>11 Components Fully Customizable</strong>: All components now support inline
+                            editing:
+                            <ul>
+                                <li><strong>Navbar</strong> - Logo text + navigation links with full CRUD
+                                    (add/remove/edit)
+                                </li>
+                                <li><strong>Hero Sections (Centered & Split)</strong> - Heading, description, and button
+                                    text</li>
+                                <li><strong>CTA Banner</strong> - Heading, description, and button text</li>
+                                <li><strong>Features Grid</strong> - Section heading and description</li>
+                                <li><strong>Testimonial Grid</strong> - Section heading</li>
+                                <li><strong>Pricing Cards</strong> - Section heading</li>
+                                <li><strong>Contact Form</strong> - Heading and description</li>
+                                <li><strong>Footer</strong> - Company name and description</li>
+                                <li><strong>Content Center</strong> - Heading and content text</li>
+                                <li><strong>Stats Counter</strong> - Placeholder (advanced editing coming in future
+                                    update)
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Real-Time Preview</strong>: All changes apply instantly to the canvas as you type -
+                            no
+                            "Apply" button needed. See your edits reflected immediately.</li>
+                        <li><strong>Button Text Editing</strong>: Hero (Centered & Split) and CTA Banner components now
+                            support editing button text for all buttons in the component.</li>
+                        <li><strong>Slide-In Customization Panel</strong>: Beautiful right-sliding panel (400px) with
+                            smooth
+                            animations, form controls, and context-specific options for each component type.</li>
+                        <li><strong>Code Architecture Improvement</strong>: Separated all customization logic into
+                            dedicated
+                            <code>customization.js</code> file (530+ lines) for better maintainability and future
+                            extensibility.
+                        </li>
+                        <li><strong>Bug Fixes</strong>:
+                            <ul>
+                                <li>Fixed timing issue where <code>initCustomization()</code> was called before
+                                    components.json finished loading, causing undefined errors</li>
+                                <li>Fixed input box overflow in customization panel by adding
+                                    <code>box-sizing: border-box</code> to form controls
+                                </li>
+                                <li>Added unique component IDs (<code>data-component-id</code>) for proper tracking of
+                                    duplicated components</li>
+                                <li>Fixed edit button not working on duplicated components by adding event listeners to
+                                    clones</li>
+                            </ul>
+                        </li>
+                        <li><strong>Enhanced User Experience</strong>: Click-outside-to-close panel, close button (×),
+                            component-specific form generation, and list editors for managing multiple items (nav links,
+                            buttons, etc.).</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 2.0.0</h2>
-                <p class="date">February 14, 2026 (Basic Templates Edition)</p>
-                <ul>
-                    <li><strong>Layout Templates (Basic)</strong>: Created a standalone templates page
-                        (`preview-templates.html`) using fundamental HTML/CSS/JS.</li>
-                    <li><strong>Standalone Components</strong>: Predefined Hero, Navbar, and Feature sections with
-                        dedicated styles in `css/templates-basic.css`.</li>
-                    <li><strong>Integrated Editor</strong>: Templates are fully compatible with existing property
-                        controls (Typography, Spacing, Style, Effects).</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 2.2.0</h2>
+                    <p class="date">February 15, 2026 (Template Gallery & Builder Upgrade)</p>
+                    <ul>
+                        <li><strong>Template Gallery Expansion</strong>: Added 7 new professional full-page templates
+                            organized into categories:
+                            <ul>
+                                <li><strong>Authentication Pages (4)</strong>: Login, Sign Up, Forgot Password, Email
+                                    Verification - all with modern gradient backgrounds and social auth options</li>
+                                <li><strong>Starter Pages (3)</strong>: 404 Error, Coming Soon, Maintenance Mode -
+                                    essential
+                                    utility pages for any project</li>
+                            </ul>
+                        </li>
+                        <li><strong>Gallery Organization</strong>: Reorganized template gallery with 4 categories
+                            (Authentication, Starter Pages, Marketing, Application) for easier browsing. Total templates
+                            increased from 3 to 10.</li>
+                        <li><strong>Critical Builder Bug Fix</strong>: Fixed control buttons (delete, move up/down) not
+                            working due to innerHTML overwriting event listeners. All components can now be properly
+                            managed.</li>
+                        <li><strong>Duplicate Component Feature</strong>: Added duplicate button (⧉) to component
+                            controls,
+                            allowing users to clone any component with one click. Event listeners are properly
+                            re-attached
+                            to cloned elements.</li>
+                        <li><strong>Export Modal Upgrade</strong>: Completely redesigned export modal with tabbed
+                            interface:
+                            <ul>
+                                <li><strong>HTML Tab</strong>: Complete document structure with proper meta tags and
+                                    external CSS link</li>
+                                <li><strong>CSS Tab</strong>: Production-ready stylesheet with base reset, component
+                                    styles,
+                                    and responsive media queries</li>
+                                <li><strong>Individual Copy Buttons</strong>: Separate copy buttons for HTML and CSS
+                                    with
+                                    visual feedback</li>
+                            </ul>
+                        </li>
+                        <li><strong>Control Visibility Enhancement</strong>: Improved section-controls visibility with
+                            increased z-index (9999), larger buttons (32px), enhanced styling with borders and
+                            backdrop-filter, and color-coded hover effects (red for delete, blue for duplicate).</li>
+                        <li><strong>Better UX</strong>: Added subtle background highlight on component hover, improved
+                            button styling with scale animation, and better visual feedback throughout the builder
+                            interface.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.9.1</h2>
-                <p class="date">February 14, 2026 (Hotfix)</p>
-                <ul>
-                    <li><strong>Layout Fixes</strong>: Restored Padding, Margin, Gap, and Opacity controls. Fixed footer
-                        visibility.</li>
-                    <li><strong>Interactivity</strong>: Resolved non-functional sliders in Layout, Typography, Style,
-                        and Effects sections by fixing direct property tagging.</li>
-                    <li><strong>Typography</strong>: Added missing Line Height and Letter Spacing controls.</li>
-                    <li><strong>Stability</strong>: Cleaned up script logic and resolved JavaScript errors during
-                        property updates.</li>
-                    <li><strong>Architecture</strong>: Decoupled JavaScript logic into `script-tailwind.js` for
-                        independent maintenance.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 2.1.0</h2>
+                    <p class="date">February 15, 2026 (Code Quality & Accessibility Update)</p>
+                    <ul>
+                        <li><strong>Security Enhancements</strong>: Implemented XSS prevention in Template Builder with
+                            HTML
+                            sanitization and input validation to protect against malicious code injection.</li>
+                        <li><strong>Accessibility Improvements</strong>: Added comprehensive ARIA labels, keyboard
+                            navigation (Enter/Space key support), and aria-live regions across Layout Lab and Template
+                            Builder for better screen reader support.</li>
+                        <li><strong>Error Handling</strong>: Added try-catch blocks, null checks, and proper error
+                            logging
+                            throughout Layout Lab and Template Builder for improved stability.</li>
+                        <li><strong>Code Organization</strong>: Extracted magic numbers to constants (BLOCK_COLORS,
+                            DEFAULT_GAP, etc.), added JSDoc documentation to all major functions, and improved code
+                            structure.</li>
+                        <li><strong>Bug Fixes</strong>: Fixed grid columns not applying immediately by adding default
+                            value
+                            "repeat(3, 1fr)" and improved validation logic.</li>
+                        <li><strong>Layout Lab Enhancement</strong>: Revamped code export feature with a VS Code-style
+                            modal
+                            displaying separate HTML and CSS tabs, replacing the previous direct-copy approach.</li>
+                        <li><strong>Performance</strong>: Optimized DOM queries by caching frequently accessed elements
+                            and
+                            improved the rgbToHex() function with better validation.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.9.0</h2>
-                <p class="date">February 14, 2026 (Tailwind Edition)</p>
-                <ul>
-                    <li><strong>New Tailwind Preview</strong>: Added a "Live Preview v2" page built entirely with
-                        Tailwind CSS utility classes.</li>
-                    <li><strong>Hybrid Architecture</strong>: The new page continues to use the core `script.js` engine,
-                        proving the logic is framework-agnostic!</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 2.0.0</h2>
+                    <p class="date">February 14, 2026 (Basic Templates Edition)</p>
+                    <ul>
+                        <li><strong>Layout Templates (Basic)</strong>: Created a standalone templates page
+                            (`preview-templates.html`) using fundamental HTML/CSS/JS.</li>
+                        <li><strong>Standalone Components</strong>: Predefined Hero, Navbar, and Feature sections with
+                            dedicated styles in `css/templates-basic.css`.</li>
+                        <li><strong>Integrated Editor</strong>: Templates are fully compatible with existing property
+                            controls (Typography, Spacing, Style, Effects).</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.8.3</h2>
-                <p class="date">February 14, 2026 (Effect Merging)</p>
-                <ul>
-                    <li><strong>Smart Merging</strong>: You can now combine compatible effects! Want to
-                        <strong>Grow</strong> AND <strong>Rotate</strong> at the same time? Go for it.
-                    </li>
-                    <li><strong>Composite Logic</strong>: The engine now intelligently merges Transforms (`scale`,
-                        `rotate`) and Animations so they work together seamlessly.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.9.1</h2>
+                    <p class="date">February 14, 2026 (Hotfix)</p>
+                    <ul>
+                        <li><strong>Layout Fixes</strong>: Restored Padding, Margin, Gap, and Opacity controls. Fixed
+                            footer
+                            visibility.</li>
+                        <li><strong>Interactivity</strong>: Resolved non-functional sliders in Layout, Typography,
+                            Style,
+                            and Effects sections by fixing direct property tagging.</li>
+                        <li><strong>Typography</strong>: Added missing Line Height and Letter Spacing controls.</li>
+                        <li><strong>Stability</strong>: Cleaned up script logic and resolved JavaScript errors during
+                            property updates.</li>
+                        <li><strong>Architecture</strong>: Decoupled JavaScript logic into `script-tailwind.js` for
+                            independent maintenance.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.8.2</h2>
-                <p class="date">February 14, 2026 (Smart Conflicts)</p>
-                <ul>
-                    <li><strong>Conflict Detection</strong>: The builder now prevents illogical combinations (like
-                        multiple Transforms on the same trigger) to keep your code clean.</li>
-                    <li><strong>Smart Feedback</strong>: Helpful error messages explain why certain interactions can't
-                        be added together.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.9.0</h2>
+                    <p class="date">February 14, 2026 (Tailwind Edition)</p>
+                    <ul>
+                        <li><strong>New Tailwind Preview</strong>: Added a "Live Preview v2" page built entirely with
+                            Tailwind CSS utility classes.</li>
+                        <li><strong>Hybrid Architecture</strong>: The new page continues to use the core `script.js`
+                            engine,
+                            proving the logic is framework-agnostic!</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.8.1</h2>
-                <p class="date">February 14, 2026 (Theme Toggle)</p>
-                <ul>
-                    <li><strong>Dark Mode</strong>: Added a toggle button to switch the preview area between Dark and
-                        Light themes.</li>
-                    <li><strong>Visual Testing</strong>: Easily test how your designs look on different backgrounds.
-                    </li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.8.3</h2>
+                    <p class="date">February 14, 2026 (Effect Merging)</p>
+                    <ul>
+                        <li><strong>Smart Merging</strong>: You can now combine compatible effects! Want to
+                            <strong>Grow</strong> AND <strong>Rotate</strong> at the same time? Go for it.
+                        </li>
+                        <li><strong>Composite Logic</strong>: The engine now intelligently merges Transforms (`scale`,
+                            `rotate`) and Animations so they work together seamlessly.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.8.0</h2>
-                <p class="date">February 14, 2026 (Interaction Builder)</p>
-                <ul>
-                    <li><strong>No-Code Interaction Builder</strong>: Define complex interactions without writing code!
-                    </li>
-                    <li><strong>Trigger System</strong>: Choose <em>when</em> an effect happens (Hover, Click, Always
-                        Loop).</li>
-                    <li><strong>Effect Presets</strong>: instant access to cool animations like
-                        <strong>Rainbow</strong>, <strong>Shake</strong>, <strong>Pulse</strong>, and
-                        <strong>Glow</strong>.
-                    </li>
-                    <li><strong>Mix & Match</strong>: Stack multiple interactions (e.g., Pulse always + Grow on Hover).
-                    </li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.8.2</h2>
+                    <p class="date">February 14, 2026 (Smart Conflicts)</p>
+                    <ul>
+                        <li><strong>Conflict Detection</strong>: The builder now prevents illogical combinations (like
+                            multiple Transforms on the same trigger) to keep your code clean.</li>
+                        <li><strong>Smart Feedback</strong>: Helpful error messages explain why certain interactions
+                            can't
+                            be added together.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.7.1</h2>
-                <p class="date">February 14, 2026 (Effects Polish)</p>
-                <ul>
-                    <li><strong>Renovated Effects Tab</strong>: Moved all interaction and effect controls (Opacity,
-                        Shadow) to the dedicated Effects tab.</li>
-                    <li><strong>Interaction Playground</strong>: The State Selector is now located within the Effects
-                        tab for a more focused workflow.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.8.1</h2>
+                    <p class="date">February 14, 2026 (Theme Toggle)</p>
+                    <ul>
+                        <li><strong>Dark Mode</strong>: Added a toggle button to switch the preview area between Dark
+                            and
+                            Light themes.</li>
+                        <li><strong>Visual Testing</strong>: Easily test how your designs look on different backgrounds.
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.7.0</h2>
-                <p class="date">February 14, 2026 (Interactive FX)</p>
-                <ul>
-                    <li><strong>Interactive States</strong>: Added full support for <code>:hover</code> and
-                        <code>:active</code> states. You can now design interactive buttons and cards directly in the
-                        previewer!
-                    </li>
-                    <li><strong>State Selector</strong>: Easily switch between Default, Hover, and Active editing modes.
-                    </li>
-                    <li><strong>Dynamic CSS Engine</strong>: Rewrote the core engine to generate real CSS classes
-                        instead of inline styles, ensuring accurate rendering of pseudo-states.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.8.0</h2>
+                    <p class="date">February 14, 2026 (Interaction Builder)</p>
+                    <ul>
+                        <li><strong>No-Code Interaction Builder</strong>: Define complex interactions without writing
+                            code!
+                        </li>
+                        <li><strong>Trigger System</strong>: Choose <em>when</em> an effect happens (Hover, Click,
+                            Always
+                            Loop).</li>
+                        <li><strong>Effect Presets</strong>: instant access to cool animations like
+                            <strong>Rainbow</strong>, <strong>Shake</strong>, <strong>Pulse</strong>, and
+                            <strong>Glow</strong>.
+                        </li>
+                        <li><strong>Mix & Match</strong>: Stack multiple interactions (e.g., Pulse always + Grow on
+                            Hover).
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.6.0</h2>
-                <p class="date">February 14, 2026 (UI Refinement)</p>
-                <ul>
-                    <li>Tabbed Interface.</li>
-                    <li>Granular Effects (Manual Mode).</li>
-                    <li>Smart Controls.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.7.1</h2>
+                    <p class="date">February 14, 2026 (Effects Polish)</p>
+                    <ul>
+                        <li><strong>Renovated Effects Tab</strong>: Moved all interaction and effect controls (Opacity,
+                            Shadow) to the dedicated Effects tab.</li>
+                        <li><strong>Interaction Playground</strong>: The State Selector is now located within the
+                            Effects
+                            tab for a more focused workflow.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.5.0</h2>
-                <p class="date">February 14, 2026 (Control Enhancements)</p>
-                <ul>
-                    <li>Slider & Number Inputs.</li>
-                    <li>Display Options.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.7.0</h2>
+                    <p class="date">February 14, 2026 (Interactive FX)</p>
+                    <ul>
+                        <li><strong>Interactive States</strong>: Added full support for <code>:hover</code> and
+                            <code>:active</code> states. You can now design interactive buttons and cards directly in
+                            the
+                            previewer!
+                        </li>
+                        <li><strong>State Selector</strong>: Easily switch between Default, Hover, and Active editing
+                            modes.
+                        </li>
+                        <li><strong>Dynamic CSS Engine</strong>: Rewrote the core engine to generate real CSS classes
+                            instead of inline styles, ensuring accurate rendering of pseudo-states.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.4.0</h2>
-                <p class="date">February 14, 2026</p>
-                <ul>
-                    <li>VS Code Style Modal.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.6.0</h2>
+                    <p class="date">February 14, 2026 (UI Refinement)</p>
+                    <ul>
+                        <li>Tabbed Interface.</li>
+                        <li>Granular Effects (Manual Mode).</li>
+                        <li>Smart Controls.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.3.0</h2>
-                <p class="date">February 14, 2026</p>
-                <ul>
-                    <li>Dynamic Component Loading.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.5.0</h2>
+                    <p class="date">February 14, 2026 (Control Enhancements)</p>
+                    <ul>
+                        <li>Slider & Number Inputs.</li>
+                        <li>Display Options.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.2.0</h2>
-                <p class="date">February 13, 2026</p>
-                <ul>
-                    <li><strong>Core CSS Engine</strong>: Implemented variable-based styling system.</li>
-                    <li><strong>Layout Basics</strong>: Added Flexbox and Grid toggles.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.4.0</h2>
+                    <p class="date">February 14, 2026</p>
+                    <ul>
+                        <li>VS Code Style Modal.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.1.0</h2>
-                <p class="date">February 13, 2026</p>
-                <ul>
-                    <li><strong>Basic Controls</strong>: Text Input, Width/Height sliders.</li>
-                    <li><strong>Preview Panel</strong>: Initial live preview implementation.</li>
-                </ul>
-            </div>
+                <div class="version">
+                    <h2>Version 1.3.0</h2>
+                    <p class="date">February 14, 2026</p>
+                    <ul>
+                        <li>Dynamic Component Loading.</li>
+                    </ul>
+                </div>
 
-            <div class="version">
-                <h2>Version 1.0.0</h2>
-                <p class="date">February 13, 2026</p>
-                <ul>
-                    <li><strong>Initial Release</strong>: Project setup with HTML structure.</li>
-                    <li><strong>File System</strong>: Organized css/js folders.</li>
-                </ul>
+                <div class="version">
+                    <h2>Version 1.2.0</h2>
+                    <p class="date">February 13, 2026</p>
+                    <ul>
+                        <li><strong>Core CSS Engine</strong>: Implemented variable-based styling system.</li>
+                        <li><strong>Layout Basics</strong>: Added Flexbox and Grid toggles.</li>
+                    </ul>
+                </div>
+
+                <div class="version">
+                    <h2>Version 1.1.0</h2>
+                    <p class="date">February 13, 2026</p>
+                    <ul>
+                        <li><strong>Basic Controls</strong>: Text Input, Width/Height sliders.</li>
+                        <li><strong>Preview Panel</strong>: Initial live preview implementation.</li>
+                    </ul>
+                </div>
+
+                <div class="version">
+                    <h2>Version 1.0.0</h2>
+                    <p class="date">February 13, 2026</p>
+                    <ul>
+                        <li><strong>Initial Release</strong>: Project setup with HTML structure.</li>
+                        <li><strong>File System</strong>: Organized css/js folders.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
     </main>
 
     <!-- Dynamically loaded Footer -->
