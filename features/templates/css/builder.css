@@ -106,7 +106,8 @@
     border: 2px solid transparent;
     transition: border-color 0.2s;
     min-height: 40px;
-    /* Ensure minimum height for controls */
+    z-index: 1;
+    /* Low z-index to stay below navbar dropdown (2000) while maintaining stacking context */
 }
 
 .section-wrapper:hover {
