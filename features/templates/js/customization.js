@@ -95,7 +95,6 @@ function generateCustomizationForm(type, wrapper) {
             return generateFooterForm(wrapper);
         case 'content_center':
             return generateContentForm(wrapper);
-        // Add more cases for other components
         default:
             return '<p style="color: #64748b;">Customization for this component is coming soon!</p>';
     }
@@ -137,6 +136,7 @@ function generateNavbarForm(wrapper) {
 function generateHeroForm(wrapper, type) {
     const heading = wrapper.querySelector('h1')?.textContent || '';
     const description = wrapper.querySelector('p')?.textContent || '';
+    const buttons = Array.from(wrapper.querySelectorAll('.btn')).map(btn => btn.textContent);
 
     return `
         <div class="form-group">
@@ -149,9 +149,16 @@ function generateHeroForm(wrapper, type) {
             <textarea id="hero-description" class="form-control" rows="4">${description}</textarea>
         </div>
         
-        <p style="color: #64748b; font-size: 0.85rem; margin-top: 1rem;">
-            <strong>Note:</strong> Button customization coming soon!
-        </p>
+        <div class="form-group">
+            <label>Button Text</label>
+            <div id="hero-buttons-list" class="list-editor">
+                ${buttons.map((btnText, index) => `
+                    <div class="list-item" data-index="${index}">
+                        <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
+                    </div>
+                `).join('')}
+            </div>
+        </div>
     `;
 }
 
@@ -161,6 +168,7 @@ function generateHeroForm(wrapper, type) {
 function generateCTAForm(wrapper) {
     const heading = wrapper.querySelector('h2')?.textContent || '';
     const description = wrapper.querySelector('p')?.textContent || '';
+    const buttons = Array.from(wrapper.querySelectorAll('.btn')).map(btn => btn.textContent);
 
     return `
         <div class="form-group">
@@ -171,6 +179,17 @@ function generateCTAForm(wrapper) {
         <div class="form-group">
             <label>Description</label>
             <textarea id="cta-description" class="form-control" rows="3">${description}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Button Text</label>
+            <div id="cta-buttons-list" class="list-editor">
+                ${buttons.map((btnText, index) => `
+                    <div class="list-item" data-index="${index}">
+                        <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
+                    </div>
+                `).join('')}
+            </div>
         </div>
     `;
 }
@@ -440,6 +459,18 @@ function attachHeroListeners(wrapper) {
             if (p) p.textContent = e.target.value;
         });
     }
+
+    // Button text inputs
+    const buttonInputs = document.querySelectorAll('[data-btn-index]');
+    buttonInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+            const index = parseInt(e.target.getAttribute('data-btn-index'));
+            const buttons = wrapper.querySelectorAll('.btn');
+            if (buttons[index]) {
+                buttons[index].textContent = e.target.value;
+            }
+        });
+    });
 }
 
 /**
@@ -462,6 +493,18 @@ function attachCTAListeners(wrapper) {
             if (p) p.textContent = e.target.value;
         });
     }
+
+    // Button text inputs
+    const buttonInputs = document.querySelectorAll('[data-btn-index]');
+    buttonInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+            const index = parseInt(e.target.getAttribute('data-btn-index'));
+            const buttons = wrapper.querySelectorAll('.btn');
+            if (buttons[index]) {
+                buttons[index].textContent = e.target.value;
+            }
+        });
+    });
 }
 
 /**
@@ -494,6 +537,86 @@ function attachContactFormListeners(wrapper) {
 
     if (descInput) {
         descInput.addEventListener('input', (e) => {
+            const p = wrapper.querySelector('p');
+            if (p) p.textContent = e.target.value;
+        });
+    }
+}
+
+/**
+ * Attaches listeners for features grid customization
+ */
+function attachFeaturesListeners(wrapper) {
+    const headingInput = document.getElementById('features-heading');
+    const descInput = document.getElementById('features-description');
+
+    if (headingInput) {
+        headingInput.addEventListener('input', (e) => {
+            const h2 = wrapper.querySelector('h2');
+            if (h2) h2.textContent = e.target.value;
+        });
+    }
+
+    if (descInput) {
+        descInput.addEventListener('input', (e) => {
+            const p = wrapper.querySelector('p');
+            if (p) p.textContent = e.target.value;
+        });
+    }
+}
+
+/**
+ * Attaches listeners for testimonial grid customization
+ */
+function attachTestimonialListeners(wrapper) {
+    const headingInput = document.getElementById('testimonial-heading');
+
+    if (headingInput) {
+        headingInput.addEventListener('input', (e) => {
+            const h2 = wrapper.querySelector('h2');
+            if (h2) h2.textContent = e.target.value;
+        });
+    }
+}
+
+/**
+ * Attaches listeners for footer customization
+ */
+function attachFooterListeners(wrapper) {
+    const companyInput = document.getElementById('footer-company');
+    const descInput = document.getElementById('footer-description');
+
+    if (companyInput) {
+        companyInput.addEventListener('input', (e) => {
+            const companyEl = wrapper.querySelector('div[style*="font-weight: 900"]');
+            if (companyEl) companyEl.textContent = e.target.value;
+        });
+    }
+
+    if (descInput) {
+        descInput.addEventListener('input', (e) => {
+            const p = wrapper.querySelector('p');
+            if (p) p.textContent = e.target.value;
+        });
+    }
+}
+
+/**
+ * Attaches listeners for centered content customization
+ */
+function attachContentListeners(wrapper) {
+    const headingInput = document.getElementById('content-heading');
+    const contentInput = document.getElementById('content-text');
+
+    if (headingInput) {
+        headingInput.addEventListener('input', (e) => {
+            const h2 = wrapper.querySelector('h2');
+            if (h2) h2.textContent = e.target.value;
+        });
+    }
+
+    if (contentInput) {
+        contentInput.addEventListener('input', (e) => {
             const p = wrapper.querySelector('p');
             if (p) p.textContent = e.target.value;
         });
