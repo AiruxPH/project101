@@ -50,11 +50,16 @@ nav ul {
     padding: 0;
     margin: 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
+    margin: 0;
+    position: relative;
 }
 
 nav ul li a {
@@ -62,9 +67,93 @@ nav ul li a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+    padding: 0.75rem 1rem;
+    display: block;
 }
 
 nav ul li a:hover {
+    color: #3498db;
+}
+
+/* Dropdown Styles */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-toggle {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-dropdown-toggle:hover {
+    color: #3498db;
+}
+
+.dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.3s;
+}
+
+.nav-dropdown:hover .dropdown-arrow,
+.nav-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.active .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0.25rem;
+}
+
+.nav-dropdown-menu li {
+    display: block;
+    margin: 0;
+}
+
+.nav-dropdown-menu a {
+    color: #2c3e50;
+    padding: 0.75rem 1.25rem;
+    display: block;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-dropdown-menu a:hover {
+    background: #f8f9fa;
+    color: #3498db;
+    border-left-color: #3498db;
+}
+
+/* Active dropdown state for click support */
+.nav-dropdown.active .nav-dropdown-toggle {
     color: #3498db;
 }
 

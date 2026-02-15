@@ -2,10 +2,11 @@
  * loader.js
  * Simply finds elements with [data-include] and fetches the HTML into them.
  */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const includes = document.querySelectorAll('[data-include]');
 
-    includes.forEach(async (el) => {
+    // Load all includes
+    for (const el of includes) {
         const file = el.getAttribute('data-include');
         const root = el.getAttribute('data-root') || ''; // e.g. "../../"
 
@@ -28,5 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(`Error fetching ${file}:`, err);
             el.innerHTML = `<p style="color:red">Error. Check local server (CORS).</p>`;
         }
-    });
+    }
+
+    // After all includes are loaded, load navbar.js if navbar exists
+    if (document.querySelector('nav')) {
+        const navScript = document.createElement('script');
+        navScript.src = (document.querySelector('[data-root]')?.getAttribute('data-root') || '') + 'js/navbar.js';
+        document.body.appendChild(navScript);
+    }
 });

@@ -1,11 +1,38 @@
 <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="preview.html">Live Preview</a></li>
-        <li><a href="preview-tailwind.html">Live Preview v2 (Tailwind)</a></li>
-        <li><a href="features/templates/gallery.html">Layout Templates (Whole Page)</a></li>
-        <li><a href="features/templates/builder.html">Custom Builder (New)</a></li>
-        <li><a href="layout-lab.html">Layout Lab (Experiment)</a></li>
-        <li><a href="changelogs.html">Changelogs</a></li>
+
+        <!-- Layout Tools Dropdown -->
+        <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                Layout Tools <span class="dropdown-arrow">▾</span>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+                <li><a href="preview.html" role="menuitem">Live Preview</a></li>
+                <li><a href="preview-tailwind.html" role="menuitem">Live Preview v2 (Tailwind)</a></li>
+                <li><a href="layout-lab.html" role="menuitem">Layout Lab</a></li>
+            </ul>
+        </li>
+
+        <!-- Templates Dropdown -->
+        <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                Templates <span class="dropdown-arrow">▾</span>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+                <li><a href="features/templates/gallery.html" role="menuitem">Template Gallery</a></li>
+                <li><a href="features/templates/builder.html" role="menuitem">Custom Builder</a></li>
+            </ul>
+        </li>
+
+        <!-- Resources Dropdown -->
+        <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                Resources <span class="dropdown-arrow">▾</span>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+                <li><a href="changelogs.html" role="menuitem">Changelogs</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>
