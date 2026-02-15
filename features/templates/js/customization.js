@@ -15,15 +15,18 @@ function initCustomization(components) {
 
     const customizationPanel = document.getElementById('customization-panel');
     const panelClose = document.getElementById('panel-close');
+    const panelDone = document.getElementById('panel-done');
 
     // Close panel handlers
     if (panelClose) {
-        panelClose.addEventListener('click', () => {
-            closeCustomizationPanel();
-        });
+        panelClose.addEventListener('click', closeCustomizationPanel);
     }
 
-    // Close panel when clicking outside
+    if (panelDone) {
+        panelDone.addEventListener('click', closeCustomizationPanel);
+    }
+
+    // Close panel when clicking outside (on the overlay)
     customizationPanel?.addEventListener('click', (e) => {
         if (e.target === customizationPanel) {
             closeCustomizationPanel();
@@ -110,23 +113,24 @@ function generateNavbarForm(wrapper) {
     const navLinks = Array.from(wrapper.querySelectorAll('.tmp-nav-links a')).map(a => a.textContent);
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-signature"></i> Identity</div>
         <div class="form-group">
             <label>Logo Text</label>
             <input type="text" id="navbar-logo" class="form-control" value="${logo}">
         </div>
         
-        <div class="form-group">
-            <label>Navigation Links</label>
-            <div id="nav-links-list" class="list-editor">
-                ${navLinks.map((link, index) => `
-                    <div class="list-item" data-index="${index}">
-                        <input type="text" class="form-control" value="${link}" data-link-index="${index}">
-                        <button class="btn-remove" data-index="${index}">×</button>
-                    </div>
-                `).join('')}
-            </div>
-            <button id="add-nav-link" class="btn btn-outline btn-sm">+ Add Link</button>
+        <div class="panel-section-title"><i class="fa-solid fa-link"></i> Navigation Links</div>
+        <div id="nav-links-list" class="list-editor">
+            ${navLinks.map((link, index) => `
+                <div class="list-item" data-index="${index}">
+                    <input type="text" class="form-control" value="${link}" data-link-index="${index}">
+                    <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-nav-link" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px;">
+            <i class="fa-solid fa-plus"></i> Add Link
+        </button>
     `;
 }
 
@@ -139,28 +143,29 @@ function generateHeroForm(wrapper, type) {
     const buttons = Array.from(wrapper.querySelectorAll('.btn')).map(btn => btn.textContent);
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-heading"></i> Main Content</div>
         <div class="form-group">
-            <label>Heading</label>
+            <label>Heading Text</label>
             <textarea id="hero-heading" class="form-control" rows="3">${heading}</textarea>
         </div>
         
         <div class="form-group">
-            <label>Description</label>
+            <label>Description Paragraph</label>
             <textarea id="hero-description" class="form-control" rows="4">${description}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Button Text</label>
-            <div id="hero-buttons-list" class="list-editor">
-                ${buttons.map((btnText, index) => `
-                    <div class="list-item" data-index="${index}">
-                        <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
-                        <button class="btn-remove" data-index="${index}">×</button>
-                    </div>
-                `).join('')}
-            </div>
-            <button id="add-hero-button" class="btn btn-outline btn-sm" style="margin-top: 0.5rem;">+ Add Button</button>
+        <div class="panel-section-title"><i class="fa-solid fa-square-poll-horizontal"></i> Call-to-Action</div>
+        <div id="hero-buttons-list" class="list-editor">
+            ${buttons.map((btnText, index) => `
+                <div class="list-item" data-index="${index}">
+                    <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
+                    <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-hero-button" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; margin-top: 0.5rem;">
+            <i class="fa-solid fa-plus"></i> Add Button
+        </button>
     `;
 }
 
@@ -173,28 +178,29 @@ function generateCTAForm(wrapper) {
     const buttons = Array.from(wrapper.querySelectorAll('.btn')).map(btn => btn.textContent);
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-bullhorn"></i> Announcement</div>
         <div class="form-group">
-            <label>Heading</label>
+            <label>Banner Heading</label>
             <input type="text" id="cta-heading" class="form-control" value="${heading}">
         </div>
         
         <div class="form-group">
-            <label>Description</label>
+            <label>Banner Description</label>
             <textarea id="cta-description" class="form-control" rows="3">${description}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Button Text</label>
-            <div id="cta-buttons-list" class="list-editor">
-                ${buttons.map((btnText, index) => `
-                    <div class="list-item" data-index="${index}">
-                        <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
-                        <button class="btn-remove" data-index="${index}">×</button>
-                    </div>
-                `).join('')}
-            </div>
-            <button id="add-cta-button" class="btn btn-outline btn-sm" style="margin-top: 0.5rem;">+ Add Button</button>
+        <div class="panel-section-title"><i class="fa-solid fa-hand-pointer"></i> Actions</div>
+        <div id="cta-buttons-list" class="list-editor">
+            ${buttons.map((btnText, index) => `
+                <div class="list-item" data-index="${index}">
+                    <input type="text" class="form-control" value="${btnText}" data-btn-index="${index}">
+                    <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-cta-button" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; margin-top: 0.5rem;">
+            <i class="fa-solid fa-plus"></i> Add Button
+        </button>
     `;
 }
 
@@ -214,6 +220,7 @@ function generatePricingForm(wrapper) {
     });
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-tags"></i> Pricing Overview</div>
         <div class="form-group">
             <label>Section Heading</label>
             <input type="text" id="pricing-heading" class="form-control" value="${sectionHeading}">
@@ -224,36 +231,47 @@ function generatePricingForm(wrapper) {
             <textarea id="pricing-description" class="form-control" rows="2">${sectionDesc}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Pricing Tiers</label>
-            <div id="pricing-list" class="list-editor">
-                ${tiers.map((tier, index) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1.5rem;" data-index="${index}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Tier ${index + 1}</span>
-                            <button class="btn-remove" data-index="${index}">×</button>
-                        </div>
-                        <input type="text" class="form-control" value="${tier.name}" placeholder="Plan Name" data-tier-name="${index}">
-                        <input type="text" class="form-control" value="${tier.desc}" placeholder="Plan Description" data-tier-desc="${index}">
-                        <input type="text" class="form-control" value="${tier.price}" placeholder="Price (e.g. $29)" data-tier-price="${index}">
-                        
-                        <div style="margin-top: 0.5rem;">
-                            <label style="font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 0.25rem; display: block;">Features</label>
-                            <div class="tier-features-list">
-                                ${tier.features.map((f, fi) => `
-                                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.25rem;">
-                                        <input type="text" class="form-control form-control-sm" value="${f}" data-tier-feature="${index}" data-feature-index="${fi}">
-                                        <button class="btn-remove-feature" data-tier-index="${index}" data-feature-index="${fi}">×</button>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <button class="add-tier-feature btn btn-outline btn-sm" data-tier-index="${index}" style="width: 100%; border-style: dashed; padding: 0.25rem; font-size: 0.7rem;">+ Add Feature</button>
-                        </div>
+        <div class="panel-section-title"><i class="fa-solid fa-layer-group"></i> Plan Tiers</div>
+        <div id="pricing-list" class="list-editor">
+            ${tiers.map((tier, index) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1.5rem;" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Tier ${index + 1}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-pricing-tier" class="btn btn-outline btn-sm">+ Add Pricing Tier</button>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Plan Name</label>
+                        <input type="text" class="form-control" value="${tier.name}" placeholder="Plan Name" data-tier-name="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Description</label>
+                        <input type="text" class="form-control" value="${tier.desc}" placeholder="Plan Description" data-tier-desc="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Price</label>
+                        <input type="text" class="form-control" value="${tier.price}" placeholder="Price (e.g. $29)" data-tier-price="${index}">
+                    </div>
+                    
+                    <div style="margin-top: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 8px;">
+                        <label style="font-size: 0.75rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; display: block;">Included Features</label>
+                        <div class="tier-features-list">
+                            ${tier.features.map((f, fi) => `
+                                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <input type="text" class="form-control form-control-sm" style="font-size: 0.8rem; height: auto; padding: 0.4rem 0.6rem;" value="${f}" data-tier-feature="${index}" data-feature-index="${fi}">
+                                    <button class="btn-remove-feature" style="width: 28px; height: 28px; background: #fff1f2; color: #e11d48; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;" data-tier-index="${index}" data-feature-index="${fi}"><i class="fa-solid fa-xmark" style="font-size: 0.7rem;"></i></button>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <button class="add-tier-feature btn btn-outline btn-sm" data-tier-index="${index}" style="width: 100%; border-style: dashed; padding: 0.4rem; font-size: 0.75rem; margin-top: 0.5rem; border-radius: 8px;">
+                           <i class="fa-solid fa-plus"></i> Add Feature
+                        </button>
+                    </div>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-pricing-tier" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add Pricing Tier
+        </button>
     `;
 }
 
@@ -274,6 +292,7 @@ function generateContactFormCustomization(wrapper) {
     });
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-envelope-open-text"></i> Header info</div>
         <div class="form-group">
             <label>Heading</label>
             <input type="text" id="contact-heading" class="form-control" value="${heading}">
@@ -284,27 +303,36 @@ function generateContactFormCustomization(wrapper) {
             <textarea id="contact-description" class="form-control" rows="3">${description}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Form Fields</label>
-            <div id="contact-fields-list" class="list-editor">
-                ${fields.map((field, index) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;" data-index="${index}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Field ${index + 1}</span>
-                            <button class="btn-remove" data-index="${index}">×</button>
-                        </div>
+        <div class="panel-section-title"><i class="fa-solid fa-list-check"></i> Form Structure</div>
+        <div id="contact-fields-list" class="list-editor">
+            ${fields.map((field, index) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.25rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1.25rem; background: #fff;" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Field ${index + 1}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Label</label>
                         <input type="text" class="form-control" value="${field.label}" placeholder="Label" data-field-label="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Placeholder</label>
                         <input type="text" class="form-control" value="${field.placeholder}" placeholder="Placeholder" data-field-placeholder="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label style="font-size: 0.7rem;">Field Type</label>
                         <select class="form-control" data-field-type="${index}">
                             <option value="text" ${field.type === 'text' ? 'selected' : ''}>Text Input</option>
                             <option value="email" ${field.type === 'email' ? 'selected' : ''}>Email Input</option>
-                            <option value="textarea" ${field.type === 'textarea' ? 'selected' : ''}>Textarea</option>
+                            <option value="textarea" ${field.type === 'textarea' ? 'selected' : ''}>Textarea (Multi-line)</option>
                         </select>
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-contact-field" class="btn btn-outline btn-sm">+ Add Field</button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-contact-field" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add New Field
+        </button>
     `;
 }
 
@@ -320,6 +348,7 @@ function generateFeaturesForm(wrapper) {
     }));
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-star"></i> Showcase Header</div>
         <div class="form-group">
             <label>Section Heading</label>
             <input type="text" id="features-heading" class="form-control" value="${sectionHeading}">
@@ -330,22 +359,28 @@ function generateFeaturesForm(wrapper) {
             <textarea id="features-description" class="form-control" rows="3">${sectionDesc}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Feature Cards</label>
-            <div id="features-list" class="list-editor">
-                ${features.map((feat, index) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;" data-index="${index}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Feature ${index + 1}</span>
-                            <button class="btn-remove" data-index="${index}">×</button>
-                        </div>
+        <div class="panel-section-title"><i class="fa-solid fa-cubes"></i> Feature Cards</div>
+        <div id="features-list" class="list-editor">
+            ${features.map((feat, index) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.25rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1.25rem; background: #fff;" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Feature ${index + 1}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Title</label>
                         <input type="text" class="form-control" value="${feat.heading}" placeholder="Feature Title" data-feat-heading="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label style="font-size: 0.7rem;">Description</label>
                         <textarea class="form-control" rows="2" placeholder="Feature Description" data-feat-desc="${index}">${feat.description}</textarea>
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-feature" class="btn btn-outline btn-sm">+ Add Feature Card</button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-feature" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add Feature Card
+        </button>
     `;
 }
 
@@ -365,6 +400,7 @@ function generateTestimonialForm(wrapper) {
     });
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-quote-left"></i> Social Proof Header</div>
         <div class="form-group">
             <label>Section Heading</label>
             <input type="text" id="testimonial-heading" class="form-control" value="${sectionHeading}">
@@ -375,23 +411,32 @@ function generateTestimonialForm(wrapper) {
             <textarea id="testimonial-description" class="form-control" rows="2">${sectionDesc}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Testimonials</label>
-            <div id="testimonial-list" class="list-editor">
-                ${testimonials.map((t, index) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;" data-index="${index}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Testimonial ${index + 1}</span>
-                            <button class="btn-remove" data-index="${index}">×</button>
-                        </div>
+        <div class="panel-section-title"><i class="fa-solid fa-users-rectangle"></i> Reviews</div>
+        <div id="testimonial-list" class="list-editor">
+            ${testimonials.map((t, index) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.25rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1.25rem; background: #fff;" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Review ${index + 1}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Quote</label>
                         <textarea class="form-control" rows="3" placeholder="Quote" data-t-quote="${index}">${t.quote}</textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Author Name</label>
                         <input type="text" class="form-control" value="${t.name}" placeholder="Name" data-t-name="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label style="font-size: 0.7rem;">Role / Company</label>
                         <input type="text" class="form-control" value="${t.role}" placeholder="Role/Company" data-t-role="${index}">
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-testimonial" class="btn btn-outline btn-sm">+ Add Testimonial</button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-testimonial" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add Testimonial
+        </button>
     `;
 }
 
@@ -405,22 +450,28 @@ function generateStatsForm(wrapper) {
     }));
 
     return `
-        <div class="form-group">
-            <label>Stats</label>
-            <div id="stats-list" class="list-editor">
-                ${stats.map((stat, index) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;" data-index="${index}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Stat ${index + 1}</span>
-                            <button class="btn-remove" data-index="${index}">×</button>
-                        </div>
-                        <input type="text" class="form-control" value="${stat.number}" placeholder="Number (e.g. 10K+)" data-stat-number="${index}">
+        <div class="panel-section-title"><i class="fa-solid fa-chart-simple"></i> Metrics</div>
+        <div id="stats-list" class="list-editor">
+            ${stats.map((stat, index) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.25rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1rem; background: #fff;" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: #64748b;">Stat ${index + 1}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label style="font-size: 0.7rem;">Value (e.g. 10k+)</label>
+                        <input type="text" class="form-control" value="${stat.number}" placeholder="Number" data-stat-number="${index}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label style="font-size: 0.7rem;">Label</label>
                         <input type="text" class="form-control" value="${stat.label}" placeholder="Label" data-stat-label="${index}">
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-stat" class="btn btn-outline btn-sm">+ Add Stat</button>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-stat" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add Metric
+        </button>
     `;
 }
 
@@ -439,40 +490,43 @@ function generateFooterForm(wrapper) {
     }));
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-building"></i> Company Profile</div>
         <div class="form-group">
-            <label>Company Name</label>
+            <label>Brand Name</label>
             <input type="text" id="footer-company" class="form-control" value="${companyName}">
         </div>
         
         <div class="form-group">
-            <label>Description</label>
+            <label>Short Description</label>
             <textarea id="footer-description" class="form-control" rows="3">${description}</textarea>
         </div>
         
-        <div class="form-group">
-            <label>Link Columns</label>
-            <div id="footer-columns-list" class="list-editor">
-                ${columns.map((col, cIndex) => `
-                    <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;" data-index="${cIndex}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <input type="text" class="form-control form-control-sm" style="font-weight: 700; width: 70%;" value="${col.heading}" data-footer-col-heading="${cIndex}">
-                            <button class="btn-remove" data-index="${cIndex}">×</button>
-                        </div>
-                        
-                        <div class="footer-links-editor" style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed #e2e8f0;">
-                            ${col.links.map((link, lIndex) => `
-                                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.25rem;">
-                                    <input type="text" class="form-control form-control-sm" value="${link.text}" data-footer-link-text="${cIndex}" data-link-index="${lIndex}">
-                                    <button class="btn-remove-footer-link" data-col-index="${cIndex}" data-link-index="${lIndex}">×</button>
-                                </div>
-                            `).join('')}
-                            <button class="add-footer-link btn btn-outline btn-sm" data-col-index="${cIndex}" style="width: 100%; border-style: dashed; margin-top: 0.25rem;">+ Add Link</button>
-                        </div>
+        <div class="panel-section-title"><i class="fa-solid fa-table-columns"></i> Link Columns</div>
+        <div id="footer-columns-list" class="list-editor">
+            ${columns.map((col, cIndex) => `
+                <div class="list-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.25rem; border: 1px solid #f1f5f9; border-radius: 12px; margin-bottom: 1.5rem; background: #fff;" data-index="${cIndex}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <input type="text" class="form-control" style="font-weight: 700; width: 80%; background: transparent; border: none; padding-left: 0;" value="${col.heading}" data-footer-col-heading="${cIndex}">
+                        <button class="btn-remove" data-index="${cIndex}"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
-                `).join('')}
-            </div>
-            <button id="add-footer-column" class="btn btn-outline btn-sm">+ Add Column</button>
+                    
+                    <div class="footer-links-editor" style="margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px dashed #e2e8f0;">
+                        ${col.links.map((link, lIndex) => `
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <input type="text" class="form-control form-control-sm" style="font-size: 0.8rem; height: auto;" value="${link.text}" data-footer-link-text="${cIndex}" data-link-index="${lIndex}">
+                                <button class="btn-remove-footer-link" style="width: 32px; height: 32px; background: #fff1f2; color: #e11d48; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;" data-col-index="${cIndex}" data-link-index="${lIndex}"><i class="fa-solid fa-xmark" style="font-size: 0.7rem;"></i></button>
+                            </div>
+                        `).join('')}
+                        <button class="add-footer-link btn btn-outline btn-sm" data-col-index="${cIndex}" style="width: 100%; border-style: dashed; margin-top: 0.5rem; border-radius: 8px;">
+                            <i class="fa-solid fa-plus"></i> Add Link
+                        </button>
+                    </div>
+                </div>
+            `).join('')}
         </div>
+        <button id="add-footer-column" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 10px; padding: 0.75rem;">
+            <i class="fa-solid fa-plus"></i> Add Column
+        </button>
     `;
 }
 
@@ -484,13 +538,15 @@ function generateContentForm(wrapper) {
     const content = wrapper.querySelector('p')?.textContent || '';
 
     return `
+        <div class="panel-section-title"><i class="fa-solid fa-align-center"></i> Content Header</div>
         <div class="form-group">
-            <label>Heading</label>
+            <label>Main Title</label>
             <input type="text" id="content-heading" class="form-control" value="${heading}">
         </div>
         
+        <div class="panel-section-title"><i class="fa-solid fa-paragraph"></i> Body Text</div>
         <div class="form-group">
-            <label>Content</label>
+            <label>Content Description</label>
             <textarea id="content-text" class="form-control" rows="5">${content}</textarea>
         </div>
     `;
@@ -570,7 +626,8 @@ function attachNavbarListeners(wrapper) {
     const removeButtons = document.querySelectorAll('.btn-remove');
     removeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const links = wrapper.querySelectorAll('.tmp-nav-links li');
             if (links[index]) {
                 links[index].remove();
@@ -638,7 +695,8 @@ function attachHeroListeners(wrapper) {
     const removeButtons = document.querySelectorAll('#hero-buttons-list .btn-remove');
     removeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const buttons = wrapper.querySelectorAll('.btn');
             if (buttons[index]) {
                 buttons[index].remove();
@@ -711,7 +769,8 @@ function attachCTAListeners(wrapper) {
     const removeButtons = document.querySelectorAll('#cta-buttons-list .btn-remove');
     removeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const buttons = wrapper.querySelectorAll('.btn');
             if (buttons[index]) {
                 buttons[index].remove();
@@ -817,8 +876,9 @@ function attachPricingListeners(wrapper) {
     const removeFeatBtns = document.querySelectorAll('.btn-remove-feature');
     removeFeatBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const tIndex = parseInt(btn.getAttribute('data-tier-index'));
-            const fIndex = parseInt(btn.getAttribute('data-feature-index'));
+            const targetBtn = e.currentTarget;
+            const tIndex = parseInt(targetBtn.getAttribute('data-tier-index'));
+            const fIndex = parseInt(targetBtn.getAttribute('data-feature-index'));
             const cards = Array.from(wrapper.querySelectorAll('div[style*="border-radius: 16px"]'));
             if (cards[tIndex]) {
                 const li = cards[tIndex].querySelectorAll('ul li')[fIndex];
@@ -853,7 +913,8 @@ function attachPricingListeners(wrapper) {
     const removeTierBtns = document.querySelectorAll('#pricing-list > .list-item > div > .btn-remove');
     removeTierBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(btn.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const cards = Array.from(wrapper.querySelectorAll('div[style*="border-radius: 16px"]'));
             if (cards[index]) {
                 cards[index].remove();
@@ -978,7 +1039,8 @@ function attachContactFormListeners(wrapper) {
     const removeBtns = document.querySelectorAll('#contact-fields-list .btn-remove');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const divs = wrapper.querySelectorAll('form > div');
             if (divs[index]) {
                 divs[index].remove();
@@ -1065,7 +1127,8 @@ function attachFeaturesListeners(wrapper) {
     const removeButtons = document.querySelectorAll('#features-list .btn-remove');
     removeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const cards = wrapper.querySelectorAll('.tmp-feat-card');
             if (cards[index]) {
                 cards[index].remove();
@@ -1163,7 +1226,8 @@ function attachTestimonialListeners(wrapper) {
     const removeBtns = document.querySelectorAll('#testimonial-list .btn-remove');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const cards = Array.from(wrapper.querySelectorAll('div[style*="background: #fff"]')).filter(el => el.querySelector('p[style*="font-style: italic"]'));
             if (cards[index]) {
                 cards[index].remove();
@@ -1252,7 +1316,8 @@ function attachFooterListeners(wrapper) {
     const removeColBtns = document.querySelectorAll('#footer-columns-list > .list-item > div > .btn-remove');
     removeColBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(btn.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const columns = wrapper.querySelectorAll('div[style*="display: flex; flex-direction: column"]');
             if (columns[index]) {
                 columns[index].remove();
@@ -1266,8 +1331,9 @@ function attachFooterListeners(wrapper) {
     const removeLinkBtns = document.querySelectorAll('.btn-remove-footer-link');
     removeLinkBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const cIndex = parseInt(btn.getAttribute('data-col-index'));
-            const lIndex = parseInt(btn.getAttribute('data-link-index'));
+            const targetBtn = e.currentTarget;
+            const cIndex = parseInt(targetBtn.getAttribute('data-col-index'));
+            const lIndex = parseInt(targetBtn.getAttribute('data-link-index'));
             const columns = wrapper.querySelectorAll('div[style*="display: flex; flex-direction: column"]');
             if (columns[cIndex]) {
                 const link = columns[cIndex].querySelectorAll('a')[lIndex];
@@ -1349,7 +1415,8 @@ function attachStatsListeners(wrapper) {
     const removeBtns = document.querySelectorAll('#stats-list .btn-remove');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
+            const targetBtn = e.currentTarget;
+            const index = parseInt(targetBtn.getAttribute('data-index'));
             const stats = Array.from(wrapper.querySelectorAll('div[style*="text-align: center"]')).filter(el => el.querySelector('div[style*="font-size: 3.5rem"]'));
             if (stats[index]) {
                 stats[index].remove();

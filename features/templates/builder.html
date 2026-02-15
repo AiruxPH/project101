@@ -177,11 +177,21 @@
     <!-- Customization Panel -->
     <div id="customization-panel" class="customization-panel">
         <div class="panel-header">
-            <h3 id="panel-title">Customize Component</h3>
-            <button id="panel-close" class="panel-close" aria-label="Close panel">&times;</button>
+            <h3 id="panel-title" style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: #3b82f6;"></i>
+                Customize Component
+            </h3>
+            <button id="panel-close" class="panel-close" aria-label="Close panel">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
         <div id="panel-content" class="panel-content">
             <!-- Dynamic content will be inserted here -->
+        </div>
+        <div class="panel-footer">
+            <button id="panel-done" class="btn-done">
+                <i class="fa-solid fa-check"></i> Done Editing
+            </button>
         </div>
     </div>
 
