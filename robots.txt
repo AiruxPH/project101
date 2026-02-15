@@ -1,0 +1,12 @@
+# robots.txt for PROJECT 101
+# Allows all search engines to crawl the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://airuxph.github.io/project101/sitemap.xml
+
+# Optional: Disallow specific directories if needed
+# Disallow: /admin/
+# Disallow: /private/

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://airuxph.github.io/project101/</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Changelogs -->
+    <url>
+        <loc>https://airuxph.github.io/project101/changelogs.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Layout Lab -->
+    <url>
+        <loc>https://airuxph.github.io/project101/layout-lab.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Live Preview -->
+    <url>
+        <loc>https://airuxph.github.io/project101/preview.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Live Preview v2 (Tailwind) -->
+    <url>
+        <loc>https://airuxph.github.io/project101/preview-tailwind.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Template Gallery -->
+    <url>
+        <loc>https://airuxph.github.io/project101/features/templates/gallery.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Custom Builder -->
+    <url>
+        <loc>https://airuxph.github.io/project101/features/templates/builder.html</loc>
+        <lastmod>2026-02-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+</urlset>
