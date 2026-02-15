@@ -28,8 +28,435 @@
     <meta property="twitter:image" content="https://yoursite.com/images/preview.png">
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- Component Loader Script -->
     <script src="js/loader.js" defer></script>
+
+    <style>
+        /* Reset and Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        /* Animated Gradient Mesh Background */
+        .hero-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Floating orbs for depth */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: #667eea;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: #f093fb;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 7s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Bento Box Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(6, minmax(120px, auto));
+            gap: 1.5rem;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Card Base */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Hero Card - Large */
+        .hero-card {
+            grid-column: 1 / 8;
+            grid-row: 1 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gradient-text {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stats Card - Top Right */
+        .stats-card {
+            grid-column: 8 / 13;
+            grid-row: 1 / 3;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+        }
+
+        .stat-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Quick CTA Card */
+        .quick-cta-card {
+            grid-column: 8 / 13;
+            grid-row: 3 / 4;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .quick-cta-card:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+        }
+
+        .quick-cta-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Features Card - Middle */
+        .features-card {
+            grid-column: 1 / 9;
+            grid-row: 4 / 6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Templates Card */
+        .templates-card {
+            grid-column: 9 / 13;
+            grid-row: 4 / 6;
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        .template-preview {
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .template-preview:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        /* Links Card */
+        .links-card {
+            grid-column: 1 / 13;
+            grid-row: 6 / 7;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-item {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Badges */
+        .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 15%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .badge-2 {
+            bottom: 20%;
+            left: 8%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatBadge {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .hero-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .stats-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .quick-cta-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .features-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .templates-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .links-card {
+                grid-column: 1 / 7;
+                grid-row: auto;
+            }
+
+            .gradient-text {
+                font-size: 3rem;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .gradient-text {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .links-card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -37,172 +464,115 @@
     <div data-include="includes/header.html"></div>
     <div data-include="includes/navbar.html"></div>
 
-    <!-- Hero Section -->
-    <main style="flex: 1;">
-        <section
-            style="padding: 6rem 5%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; color: #fff;">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1;">
-                    Build Beautiful Layouts in Minutes
-                </h1>
-                <p
-                    style="font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                    Professional drag-and-drop Custom Builder with 11 customizable components, 10 ready-made templates,
-                    and real-time editing. No coding required.
+    <!-- Hero Container with Animated Background -->
+    <main class="hero-container">
+        <!-- Floating Orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <!-- Floating Badges -->
+        <div class="floating-badge badge-1">⚡ Real-time Editing</div>
+        <div class="floating-badge badge-2">🎨 11 Components</div>
+
+        <!-- Bento Box Grid -->
+        <div class="bento-grid">
+            <!-- Hero Card - Large -->
+            <div class="glass-card hero-card">
+                <h1 class="gradient-text">Build Beautiful Layouts in Minutes</h1>
+                <p class="hero-description">
+                    Professional drag-and-drop Custom Builder with real-time component customization.
+                    No coding required—just creativity.
                 </p>
-                <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="features/templates/builder.html"
-                        style="display: inline-block; padding: 1rem 2.5rem; background: #fff; color: #667eea; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                        Try Custom Builder
-                    </a>
-                    <a href="features/templates/gallery.html"
-                        style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem; border: 2px solid rgba(255,255,255,0.8); transition: all 0.2s;">
-                        View Templates
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Grid -->
-        <section style="padding: 6rem 5%; background: #f8fafc;">
-            <div style="max-width: 1200px; margin: 0 auto;">
-                <div style="text-align: center; margin-bottom: 4rem;">
-                    <h2 style="font-size: 2.5rem; color: #0f172a; margin-bottom: 1rem;">Everything You Need to Build
-                        Faster</h2>
-                    <p style="color: #475569; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                        Powerful tools designed for modern web development
-                    </p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    <!-- Feature 1: Custom Builder -->
-                    <div
-                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
-                        <div
-                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
-                            ⚙️</div>
-                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">Custom Builder</h3>
-                        <p style="color: #64748b; line-height: 1.6;">
-                            Drag-and-drop interface with real-time component customization. Edit text, buttons, and
-                            layouts instantly.
-                        </p>
-                    </div>
-
-                    <!-- Feature 2: 11 Components -->
-                    <div
-                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
-                        <div
-                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
-                            🧩</div>
-                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">11 Components</h3>
-                        <p style="color: #64748b; line-height: 1.6;">
-                            Professional components including Navbar, Hero, Features, CTA, Pricing, Testimonials,
-                            Contact, and more.
-                        </p>
-                    </div>
-
-                    <!-- Feature 3: Template Gallery -->
-                    <div
-                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
-                        <div
-                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
-                            📄</div>
-                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">10 Templates</h3>
-                        <p style="color: #64748b; line-height: 1.6;">
-                            Ready-made templates for authentication, marketing, and starter pages. Copy and customize
-                            instantly.
-                        </p>
-                    </div>
-
-                    <!-- Feature 4: Layout Lab -->
-                    <div
-                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
-                        <div
-                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
-                            🔬</div>
-                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">Layout Lab</h3>
-                        <p style="color: #64748b; line-height: 1.6;">
-                            Experiment with Flexbox and CSS Grid layouts. Visual playground for learning and
-                            prototyping.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Links Section -->
-        <section style="padding: 6rem 5%; background: #fff;">
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.25rem; color: #0f172a; margin-bottom: 1rem;">Get Started</h2>
-                    <p style="color: #475569; font-size: 1.05rem;">
-                        Choose your path to building beautiful layouts
-                    </p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <a href="features/templates/builder.html"
-                        style="display: block; background: linear-gradient(135deg, #667eea, #764ba2); padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #fff; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Custom Builder</h3>
-                        <p style="opacity: 0.95; line-height: 1.6;">
-                            Start building from scratch with our drag-and-drop interface and customizable components.
-                        </p>
-                    </a>
-
-                    <a href="features/templates/gallery.html"
-                        style="display: block; background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #0f172a; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Template Gallery</h3>
-                        <p style="color: #475569; line-height: 1.6;">
-                            Browse 10 professional templates and customize them to match your brand.
-                        </p>
-                    </a>
-
-                    <a href="layout-lab.html"
-                        style="display: block; background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #0f172a; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Layout Lab</h3>
-                        <p style="color: #475569; line-height: 1.6;">
-                            Experiment with Flexbox and Grid layouts in our interactive playground.
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section
-            style="padding: 5rem 5%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); text-align: center; color: #fff;">
-            <div style="max-width: 700px; margin: 0 auto;">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.25rem;">
-                    Ready to Build Something Amazing?
-                </h2>
-                <p style="font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">
-                    Join developers who are building faster with our professional tools.
-                </p>
-                <a href="features/templates/builder.html"
-                    style="display: inline-block; padding: 1.25rem 3rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);">
-                    Start Building Now →
+                <a href="features/templates/builder.html" class="cta-button">
+                    <span>Try Custom Builder</span>
+                    <span>→</span>
                 </a>
             </div>
-        </section>
+
+            <!-- Stats Card - Top Right -->
+            <div class="glass-card stats-card">
+                <div class="stat-item">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">Customizable Components</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Ready Templates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Possibilities</div>
+                </div>
+            </div>
+
+            <!-- Quick CTA Card -->
+            <a href="features/templates/gallery.html" class="glass-card quick-cta-card" style="text-decoration: none;">
+                <div class="quick-cta-text">View Templates →</div>
+            </a>
+
+            <!-- Features Card - Middle -->
+            <div class="glass-card features-card">
+                <h2 class="section-title">Everything You Need</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚙️</div>
+                        <div class="feature-content">
+                            <h3>Custom Builder</h3>
+                            <p>Drag, drop, and customize components in real-time</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧩</div>
+                        <div class="feature-content">
+                            <h3>11 Components</h3>
+                            <p>Navbar, Hero, Features, CTA, Pricing, and more</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📄</div>
+                        <div class="feature-content">
+                            <h3>Template Gallery</h3>
+                            <p>10 professional templates ready to customize</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔬</div>
+                        <div class="feature-content">
+                            <h3>Layout Lab</h3>
+                            <p>Experiment with Flexbox and CSS Grid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Templates Card -->
+            <div class="glass-card templates-card">
+                <h2 class="section-title">Quick Start</h2>
+                <a href="features/templates/builder.html" class="template-preview"
+                    style="text-decoration: none; color: inherit;">
+                    Custom Builder
+                </a>
+                <a href="features/templates/gallery.html" class="template-preview"
+                    style="text-decoration: none; color: inherit;">
+                    Template Gallery
+                </a>
+                <a href="layout-lab.html" class="template-preview" style="text-decoration: none; color: inherit;">
+                    Layout Lab
+                </a>
+            </div>
+
+            <!-- Links Card - Bottom -->
+            <div class="glass-card links-card">
+                <a href="features/templates/builder.html" class="link-item">Custom Builder</a>
+                <a href="features/templates/gallery.html" class="link-item">Templates</a>
+                <a href="layout-lab.html" class="link-item">Layout Lab</a>
+                <a href="changelogs.html" class="link-item">Changelogs</a>
+            </div>
+        </div>
     </main>
 
     <!-- Dynamically loaded Footer -->
     <div data-include="includes/footer.html"></div>
-
-    <style>
-        /* Hover effects */
-        a[href*="builder.html"]:hover,
-        a[href*="gallery.html"]:hover,
-        a[href*="layout-lab.html"]:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        }
-
-        main section>div>div>div:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        }
-    </style>
 </body>
 
 </html>
