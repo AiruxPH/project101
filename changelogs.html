@@ -19,6 +19,30 @@
         <div style="max-width: 800px; margin: 0 auto;">
             <h1>Project Changelogs</h1>
             <!--Put here all the changes you made in the project.-->
+
+            <div class="version">
+                <h2>Version 2.1.0</h2>
+                <p class="date">February 15, 2026 (Code Quality & Accessibility Update)</p>
+                <ul>
+                    <li><strong>Security Enhancements</strong>: Implemented XSS prevention in Template Builder with HTML
+                        sanitization and input validation to protect against malicious code injection.</li>
+                    <li><strong>Accessibility Improvements</strong>: Added comprehensive ARIA labels, keyboard
+                        navigation (Enter/Space key support), and aria-live regions across Layout Lab and Template
+                        Builder for better screen reader support.</li>
+                    <li><strong>Error Handling</strong>: Added try-catch blocks, null checks, and proper error logging
+                        throughout Layout Lab and Template Builder for improved stability.</li>
+                    <li><strong>Code Organization</strong>: Extracted magic numbers to constants (BLOCK_COLORS,
+                        DEFAULT_GAP, etc.), added JSDoc documentation to all major functions, and improved code
+                        structure.</li>
+                    <li><strong>Bug Fixes</strong>: Fixed grid columns not applying immediately by adding default value
+                        "repeat(3, 1fr)" and improved validation logic.</li>
+                    <li><strong>Layout Lab Enhancement</strong>: Revamped code export feature with a VS Code-style modal
+                        displaying separate HTML and CSS tabs, replacing the previous direct-copy approach.</li>
+                    <li><strong>Performance</strong>: Optimized DOM queries by caching frequently accessed elements and
+                        improved the rgbToHex() function with better validation.</li>
+                </ul>
+            </div>
+
             <div class="version">
                 <h2>Version 2.0.0</h2>
                 <p class="date">February 14, 2026 (Basic Templates Edition)</p>
