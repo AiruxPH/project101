@@ -8,33 +8,36 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/loader.js" defer></script>
     <style>
-        /* Embedding Essential Header/Nav Styles from style.css to avoid layout conflicts */
+        /* Material Design 3 Header/Nav Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         header {
-            background: #2c3e50;
-            color: #fff;
-            padding: 0.75rem 1rem;
+            background: #6750A4;
+            color: #FFFFFF;
+            padding: 1rem 5%;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         nav {
-            background: #34495e;
-            color: #fff;
-            padding: 0.5rem;
+            background: #FFFBFE;
+            color: #1C1B1F;
+            padding: 0.75rem 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
         }
 
         nav ul {
@@ -42,22 +45,29 @@
             padding: 0;
             margin: 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            display: inline-block;
+            margin: 0;
         }
 
         nav ul li a {
-            color: #fff;
+            color: #1C1B1F;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.75rem 1.25rem;
+            display: block;
+            border-radius: 20px;
         }
 
         nav ul li a:hover {
-            color: #3498db;
+            background: #EADDFF;
+            color: #21005D;
         }
 
         /* Compatibility Styles for script.js */

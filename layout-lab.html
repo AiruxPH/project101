@@ -7,21 +7,23 @@
     <title>Layout Lab - Project 101</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Material Design 3 Layout Lab Styles */
         .lab-layout {
             display: grid;
             grid-template-columns: 320px 1fr;
             height: 100vh;
-            background: #f1f5f9;
+            background: #F5F5F9;
         }
 
         .lab-sidebar {
-            background: #fff;
+            background: #FFFBFE;
             padding: 1.5rem;
-            border-right: 1px solid #e2e8f0;
+            border-right: 1px solid #E7E0EC;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
         }
 
         .lab-canvas {
@@ -33,36 +35,37 @@
         }
 
         #parent-container {
-            background: #fff;
-            border: 2px dashed #94a3b8;
-            border-radius: 8px;
+            background: #FFFBFE;
+            border: 2px dashed #79747E;
+            border-radius: 16px;
             min-height: 400px;
             width: 100%;
             max-width: 1000px;
             padding: 20px;
             overflow: auto;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
         }
 
         .lab-block {
-            background: #3498db;
+            background: #6750A4;
             color: white;
             padding: 20px;
-            border-radius: 4px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             min-width: 80px;
             min-height: 80px;
             border: 3px solid transparent;
         }
 
         .lab-block.active {
-            border-color: #2ecc71;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+            border-color: #EADDFF;
+            box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .control-section {
@@ -72,28 +75,32 @@
         }
 
         .control-section h3 {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #64748b;
+            letter-spacing: 0.1em;
+            color: #49454F;
             margin-bottom: 0.5rem;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #E7E0EC;
             padding-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .lab-header {
             padding: 1rem 1.5rem;
-            background: #0f172a;
+            background: #6750A4;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .back-link {
-            color: #94a3b8;
+            color: #EADDFF;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         .back-link:hover {
@@ -103,39 +110,57 @@
         .control-group {
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .control-group label {
-            font-size: 0.8rem;
+            font-size: 0.875rem;
             font-weight: 600;
+            color: #1C1B1F;
         }
 
         .control-group select,
         .control-group input {
-            padding: 0.5rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
+            padding: 0.75rem;
+            border: 1px solid #79747E;
+            border-radius: 12px;
+            background: #FFFBFE;
+            color: #1C1B1F;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .control-group select:focus,
+        .control-group input:focus {
+            outline: none;
+            border-color: #6750A4;
+            box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.2);
         }
 
         .btn-add {
-            background: #2563eb;
-            color: #fff;
+            background: #6750A4;
+            color: #FFFFFF;
             border: none;
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: 1rem;
+            border-radius: 20px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
         }
 
         .btn-add:hover {
-            background: #1d4ed8;
+            background: #7965AF;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-add:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
         }
 
         .no-selection-msg {
-            font-size: 0.8rem;
-            color: #94a3b8;
+            font-size: 0.875rem;
+            color: #49454F;
             font-style: italic;
         }
     </style>
