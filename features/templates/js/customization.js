@@ -11,7 +11,9 @@ let componentsData = null;
  * @param {object} components - Component definitions from builder.js
  */
 function initCustomization(components) {
+    console.log('initCustomization called with:', components);
     componentsData = components;
+    console.log('componentsData set to:', componentsData);
 
     const customizationPanel = document.getElementById('customization-panel');
     const panelClose = document.getElementById('panel-close');
