@@ -160,6 +160,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #eee;
+    background: #ffffff;
 }
 
 .tmp-logo {
@@ -178,7 +179,7 @@
 
 .tmp-nav-links a {
     text-decoration: none;
-    color: #555;
+    color: #334155;
     font-size: 0.9rem;
 }
 
@@ -186,6 +187,7 @@
 .tmp-hero {
     padding: 8rem 5%;
     text-align: center;
+    background: #ffffff;
 }
 
 .tmp-hero h1 {
@@ -197,7 +199,7 @@
 
 .tmp-hero p {
     font-size: 1.25rem;
-    color: #666;
+    color: #475569;
     max-width: 700px;
     margin: 0 auto 2.5rem;
     line-height: 1.6;
