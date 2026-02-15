@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Lab - Project 101</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .lab-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: 100vh;
+            background: #f1f5f9;
+        }
+
+        .lab-sidebar {
+            background: #fff;
+            padding: 1.5rem;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .lab-canvas {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        #parent-container {
+            background: #fff;
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            min-height: 400px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .lab-block {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 80px;
+            min-height: 80px;
+            border: 3px solid transparent;
+        }
+
+        .lab-block.active {
+            border-color: #2ecc71;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .control-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .control-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .lab-header {
+            padding: 1rem 1.5rem;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .control-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+
+        .btn-add {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background: #1d4ed8;
+        }
+
+        .no-selection-msg {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lab-header">
+        <div style="font-weight: 900; letter-spacing: -0.02em;">LAYOUT LAB</div>
+        <a href="index.html" class="back-link">← Back to Builder</a>
+    </div>
+
+    <div class="lab-layout">
+        <aside class="lab-sidebar">
+            <button id="add-block" class="btn-add">+ Add New Block</button>
+
+            <div class="control-section">
+                <h3>Parent Controls</h3>
+                <div class="control-group">
+                    <label>Display Mode</label>
+                    <select id="parent-display">
+                        <option value="block">Block (Default)</option>
+                        <option value="flex">Flexbox</option>
+                        <option value="grid">CSS Grid</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Gap (Space between)</label>
+                    <input type="text" id="parent-gap" placeholder="e.g. 20px">
+                </div>
+                <div id="flex-only-controls" style="display:none;" class="control-section">
+                    <div class="control-group">
+                        <label>Flex Direction</label>
+                        <select id="parent-direction">
+                            <option value="row">Row</option>
+                            <option value="column">Column</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="grid-only-controls" style="display:none;" class="control-section">
+                    <div class="control-group">
+                        <label>Columns (Grid Only)</label>
+                        <input type="text" id="parent-columns" placeholder="e.g. repeat(3, 1fr)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>Child Controls</h3>
+                <div id="child-controls-container">
+                    <p class="no-selection-msg">Click a block on the right to edit its properties.</p>
+                </div>
+
+                <!-- Hidden template for child controls -->
+                <div id="child-controls-template" style="display:none;">
+                    <div class="control-group">
+                        <label>Block Label</label>
+                        <input type="text" class="child-label-input">
+                    </div>
+                    <div class="control-group">
+                        <label>Background Color</label>
+                        <input type="color" class="child-bg-input">
+                    </div>
+                    <div class="flex-child-controls">
+                        <div class="control-group">
+                            <label>Flex Grow</label>
+                            <input type="number" class="child-grow-input" value="0" min="0">
+                        </div>
+                    </div>
+                    <div class="grid-child-controls">
+                        <div class="control-group">
+                            <label>Grid Column Span</label>
+                            <input type="text" class="child-span-input" placeholder="e.g. span 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="lab-canvas">
+            <div id="parent-container">
+                <!-- Blocks go here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/layout-lab.js"></script>
+</body>
+
+</html>
