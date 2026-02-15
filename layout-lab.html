@@ -162,8 +162,8 @@
                     </select>
                 </div>
                 <div class="control-group">
-                    <label>Gap (Space between)</label>
-                    <input type="text" id="parent-gap" placeholder="e.g. 20px">
+                    <label>Gap (Space between): <span id="gap-value">20px</span></label>
+                    <input type="range" id="parent-gap" min="0" max="100" value="20">
                 </div>
                 <div id="flex-only-controls" style="display:none;" class="control-section">
                     <div class="control-group">
@@ -219,13 +219,18 @@
                     </div>
                 </div>
             </div>
-        </aside>
+    </div>
 
-        <main class="lab-canvas">
-            <div id="parent-container">
-                <!-- Blocks go here -->
-            </div>
-        </main>
+    <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+        <button id="copy-code-btn" class="btn-add" style="background: #0f172a; width: 100%;">Copy Layout Code</button>
+    </div>
+    </aside>
+
+    <main class="lab-canvas">
+        <div id="parent-container">
+            <!-- Blocks go here -->
+        </div>
+    </main>
     </div>
 
     <script src="js/layout-lab.js"></script>

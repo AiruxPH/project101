@@ -8,12 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const columnsInput = document.getElementById('parent-columns');
     const directionSelect = document.getElementById('parent-direction');
     const wrapSelect = document.getElementById('parent-wrap');
+    const gapValueDisplay = document.getElementById('gap-value');
 
     // UI Panels
     const flexPanel = document.getElementById('flex-only-controls');
     const gridPanel = document.getElementById('grid-only-controls');
     const childContainer = document.getElementById('child-controls-container');
     const childTemplate = document.getElementById('child-controls-template');
+
+    // New Buttons
+    const deleteBtn = document.getElementById('delete-block-btn');
+    const copyCodeBtn = document.getElementById('copy-code-btn');
 
     let blockCount = 0;
     let selectedBlock = null;
@@ -24,10 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const display = displaySelect.value;
         parent.style.display = display;
 
-        // AUTO-UNIT HELPER: Adding 'px' if user just typed a number
-        let gapValue = gapInput.value.trim();
-        if (gapValue && !isNaN(gapValue)) gapValue += 'px';
-        parent.style.gap = gapValue;
+        // GAP SLIDER LOGIC (Layman's Terms)
+        // 1. We get the number from the slider (e.g., "50")
+        // 2. We add "px" to it (e.g., "50px")
+        // 3. We tell the parent container: "Set your gap to 50px"
+        // 4. We also show the number on the screen so you know what you picked.
+        const currentGap = gapInput.value + 'px';
+        parent.style.gap = currentGap;
+        gapValueDisplay.innerText = currentGap;
 
         // Toggle Panels
         flexPanel.style.display = display === 'flex' ? 'block' : 'none';
@@ -52,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displaySelect.addEventListener('change', updateParent);
-    gapInput.addEventListener('input', updateParent);
+    gapInput.addEventListener('input', updateParent); // 'input' fires immediately when sliding
     columnsInput.addEventListener('input', updateParent);
     directionSelect.addEventListener('change', updateParent);
     wrapSelect.addEventListener('change', updateParent);
@@ -85,6 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedBlock) selectedBlock.classList.remove('active');
         selectedBlock = el;
         selectedBlock.classList.add('active');
+
+        // Show delete button
+        deleteBtn.style.display = 'block';
 
         renderChildControls();
     }
@@ -119,6 +131,20 @@ document.addEventListener('DOMContentLoaded', () => {
         childContainer.appendChild(controls);
     }
 
+    // DELETE BLOCK LOGIC (Layman's Terms)
+    // 1. Check if a block is actually selected.
+    // 2. We ask the DOM (Document Object Model) to 'remove' the specific element we stored in 'selectedBlock'.
+    // 3. We clear the variable 'selectedBlock' so the code knows nothing is selected anymore.
+    // 4. We hide the delete button and show the intro message again.
+    deleteBtn.addEventListener('click', () => {
+        if (selectedBlock) {
+            selectedBlock.remove();
+            selectedBlock = null;
+            childContainer.innerHTML = '<p class="no-selection-msg">Click a block on the right to edit its properties.</p>';
+            deleteBtn.style.display = 'none';
+        }
+    });
+
     addBtn.addEventListener('click', addBlock);
 
     // Click canvas to deselect
@@ -127,8 +153,29 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedBlock.classList.remove('active');
             selectedBlock = null;
             childContainer.innerHTML = '<p class="no-selection-msg">Click a block on the right to edit its properties.</p>';
+            deleteBtn.style.display = 'none';
         }
     };
+
+    // COPY CODE LOGIC
+    copyCodeBtn.addEventListener('click', () => {
+        const parentStyle = parent.getAttribute('style');
+
+        let childCode = '';
+        Array.from(parent.children).forEach(child => {
+            childCode += `  <div class="block" style="${child.getAttribute('style')}">${child.innerText}</div>\n`;
+        });
+
+        const fullCode = `<!-- Layout Lab Result -->
+<div id="parent" style="${parentStyle}">
+${childCode}</div>`;
+
+        navigator.clipboard.writeText(fullCode).then(() => {
+            const original = copyCodeBtn.innerText;
+            copyCodeBtn.innerText = "Copied to Clipboard!";
+            setTimeout(() => copyCodeBtn.innerText = original, 2000);
+        });
+    });
 
     // Helper: Component to Hex
     function rgbToHex(rgb) {
