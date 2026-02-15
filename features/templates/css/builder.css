@@ -424,7 +424,6 @@
     transition: all 0.4s;
     pointer-events: none;
     z-index: 9998;
-    backdrop-filter: blur(4px);
 }
 
 .customization-panel.active::before {
