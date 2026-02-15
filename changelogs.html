@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog - PROJECT 101</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/changelogs.css">
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/ef9baa832e.js" crossorigin="anonymous"></script>
     <!-- Component Loader Script -->
     <script src="js/loader.js" defer></script>
 </head>
@@ -15,11 +18,95 @@
     <div data-include="includes/header.html"></div>
     <div data-include="includes/navbar.html"></div>
 
-    <main style="padding: 2rem; overflow-y: auto; flex: 1;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1>Project Changelogs</h1>
-            <!--Put here all the changes you made in the project.-->
-            <div class="version">
+    <main style="padding: 2rem 0; overflow-y: auto; flex: 1;">
+        <div class="changelog-container">
+            <div class="changelog-header">
+                <h1>Project Changelogs</h1>
+                <p>Track the evolution of PROJECT 101 through every update</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Version 3.1.0 -->
+                <div class="version-card latest" data-version-type="minor">
+                    <div class="timeline-node">
+                        <span class="version-number">3.1.0</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h2>Version 3.1.0</h2>
+                            <p class="release-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                February 16, 2026
+                            </p>
+                            <span class="release-badge">Customization Panel Beautification & Z-Index Fixes</span>
+                        </div>
+                        <div class="changes-list">
+                            <div class="change-item" data-type="ui">
+                                <i class="fa-solid fa-palette"></i>
+                                <div class="change-content">
+                                    <strong>Customization Panel Material Design 3 Facelift</strong>: Completely
+                                    redesigned the customization panel in the Custom Builder with premium MD3
+                                    aesthetics:
+                                    <ul>
+                                        <li><strong>Visual Refinements</strong>: Softer layered shadows (24px/4px),
+                                            reduced border-radius (16px), subtle header background (#fafbfc), and
+                                            improved visual hierarchy.</li>
+                                        <li><strong>Font Awesome Integration</strong>: Added descriptive icons to all
+                                            section headers (e.g., Identity, Links, Main Content, Call-to-Action) for
+                                            better visual scanning.</li>
+                                        <li><strong>Enhanced Form Controls</strong>: Refined input styling with better
+                                            focus states, improved list editor visuals with rounded corners and hover
+                                            effects.</li>
+                                        <li><strong>Done Button</strong>: Added prominent "Done Editing" button in panel
+                                            footer with blue gradient and lift animation.</li>
+                                        <li><strong>Robust Event Handling</strong>: Updated all click event listeners to
+                                            use <code>e.currentTarget</code> for reliable icon handling within buttons.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="bug">
+                                <i class="fa-solid fa-bug"></i>
+                                <div class="change-content">
+                                    <strong>Z-Index Hierarchy Optimization</strong>: Fixed critical stacking context
+                                    issues across the builder:
+                                    <ul>
+                                        <li><strong>Customization Panel</strong>: Set to <code>z-index: 10000</code> to
+                                            appear above all builder elements.</li>
+                                        <li><strong>Section Controls</strong>: Maintained at <code>z-index: 9999</code>
+                                            for edit/move/duplicate buttons.</li>
+                                        <li><strong>Main Navbar Dropdown</strong>: Raised to <code>z-index: 2000</code>
+                                            to stay above canvas elements.</li>
+                                        <li><strong>Section Wrappers</strong>: Set to <code>z-index: 1</code> to prevent
+                                            overlaying main navigation.</li>
+                                        <li><strong>Removed Darkening Overlay</strong>: Eliminated the
+                                            <code>::before</code> pseudo-element that was causing unwanted screen
+                                            darkening and blur issues.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="change-item" data-type="bug">
+                                <i class="fa-solid fa-wrench"></i>
+                                <div class="change-content">
+                                    <strong>Bug Fixes</strong>:
+                                    <ul>
+                                        <li>Fixed customization panel content appearing blurred due to backdrop-filter
+                                            on
+                                            overlay.</li>
+                                        <li>Fixed section-wrapper borders appearing above main navbar dropdowns.</li>
+                                        <li>Fixed component controls appearing behind customization panel.</li>
+                                        <li>Added missing CSS styles for <code>.btn-done</code> and
+                                            <code>.panel-section-title</code>.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 3.0.0 -->
                 <h2>Version 3.0.0</h2>
                 <p class="date">February 15, 2026 (Material Design 3 Evolution)</p>
                 <ul>
