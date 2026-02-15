@@ -4,7 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT 101</title>
+    <title>PROJECT 101 - Build Beautiful Layouts in Minutes</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="PROJECT 101 - Build Beautiful Layouts in Minutes">
+    <meta name="description"
+        content="Professional drag-and-drop Custom Builder with 11 customizable components, 10 ready-made templates, and real-time editing. No coding required.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/">
+    <meta property="og:title" content="PROJECT 101 - Build Beautiful Layouts in Minutes">
+    <meta property="og:description"
+        content="Professional drag-and-drop Custom Builder with 11 customizable components, 10 ready-made templates, and real-time editing. No coding required.">
+    <meta property="og:image" content="https://yoursite.com/images/preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yoursite.com/">
+    <meta property="twitter:title" content="PROJECT 101 - Build Beautiful Layouts in Minutes">
+    <meta property="twitter:description"
+        content="Professional drag-and-drop Custom Builder with 11 customizable components, 10 ready-made templates, and real-time editing. No coding required.">
+    <meta property="twitter:image" content="https://yoursite.com/images/preview.png">
+
     <link rel="stylesheet" href="css/style.css">
     <!-- Component Loader Script -->
     <script src="js/loader.js" defer></script>
@@ -15,19 +37,172 @@
     <div data-include="includes/header.html"></div>
     <div data-include="includes/navbar.html"></div>
 
-    <main
-        style="padding: 2rem; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-        <h2>Welcome to PROJECT 101</h2>
-        <p>This is the main landing page of our project. Explore our features using the navigation bar above.</p>
-        <div style="margin-top: 2rem;">
-            <a href="preview.html"
-                style="display: inline-block; padding: 1rem 2rem; background: #3498db; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">Go
-                to Live Preview</a>
-        </div>
+    <!-- Hero Section -->
+    <main style="flex: 1;">
+        <section
+            style="padding: 6rem 5%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; color: #fff;">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1;">
+                    Build Beautiful Layouts in Minutes
+                </h1>
+                <p
+                    style="font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Professional drag-and-drop Custom Builder with 11 customizable components, 10 ready-made templates,
+                    and real-time editing. No coding required.
+                </p>
+                <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="features/templates/builder.html"
+                        style="display: inline-block; padding: 1rem 2.5rem; background: #fff; color: #667eea; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        Try Custom Builder
+                    </a>
+                    <a href="features/templates/gallery.html"
+                        style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem; border: 2px solid rgba(255,255,255,0.8); transition: all 0.2s;">
+                        View Templates
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section style="padding: 6rem 5%; background: #f8fafc;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem; color: #0f172a; margin-bottom: 1rem;">Everything You Need to Build
+                        Faster</h2>
+                    <p style="color: #475569; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                        Powerful tools designed for modern web development
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- Feature 1: Custom Builder -->
+                    <div
+                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
+                        <div
+                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
+                            ⚙️</div>
+                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">Custom Builder</h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Drag-and-drop interface with real-time component customization. Edit text, buttons, and
+                            layouts instantly.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: 11 Components -->
+                    <div
+                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
+                        <div
+                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
+                            🧩</div>
+                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">11 Components</h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Professional components including Navbar, Hero, Features, CTA, Pricing, Testimonials,
+                            Contact, and more.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: Template Gallery -->
+                    <div
+                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
+                        <div
+                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
+                            📄</div>
+                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">10 Templates</h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Ready-made templates for authentication, marketing, and starter pages. Copy and customize
+                            instantly.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4: Layout Lab -->
+                    <div
+                        style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
+                        <div
+                            style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700;">
+                            🔬</div>
+                        <h3 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem;">Layout Lab</h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Experiment with Flexbox and CSS Grid layouts. Visual playground for learning and
+                            prototyping.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section style="padding: 6rem 5%; background: #fff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.25rem; color: #0f172a; margin-bottom: 1rem;">Get Started</h2>
+                    <p style="color: #475569; font-size: 1.05rem;">
+                        Choose your path to building beautiful layouts
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <a href="features/templates/builder.html"
+                        style="display: block; background: linear-gradient(135deg, #667eea, #764ba2); padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #fff; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Custom Builder</h3>
+                        <p style="opacity: 0.95; line-height: 1.6;">
+                            Start building from scratch with our drag-and-drop interface and customizable components.
+                        </p>
+                    </a>
+
+                    <a href="features/templates/gallery.html"
+                        style="display: block; background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #0f172a; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Template Gallery</h3>
+                        <p style="color: #475569; line-height: 1.6;">
+                            Browse 10 professional templates and customize them to match your brand.
+                        </p>
+                    </a>
+
+                    <a href="layout-lab.html"
+                        style="display: block; background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-decoration: none; color: #0f172a; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700;">Layout Lab</h3>
+                        <p style="color: #475569; line-height: 1.6;">
+                            Experiment with Flexbox and Grid layouts in our interactive playground.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+            style="padding: 5rem 5%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); text-align: center; color: #fff;">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.25rem;">
+                    Ready to Build Something Amazing?
+                </h2>
+                <p style="font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">
+                    Join developers who are building faster with our professional tools.
+                </p>
+                <a href="features/templates/builder.html"
+                    style="display: inline-block; padding: 1.25rem 3rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);">
+                    Start Building Now →
+                </a>
+            </div>
+        </section>
     </main>
 
     <!-- Dynamically loaded Footer -->
     <div data-include="includes/footer.html"></div>
+
+    <style>
+        /* Hover effects */
+        a[href*="builder.html"]:hover,
+        a[href*="gallery.html"]:hover,
+        a[href*="layout-lab.html"]:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        main section>div>div>div:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+    </style>
 </body>
 
 </html>
