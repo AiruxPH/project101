@@ -313,6 +313,8 @@
     font-size: 0.9rem;
     transition: border-color 0.2s;
     font-family: inherit;
+    box-sizing: border-box;
+    /* Prevent overflow */
 }
 
 .form-control:focus {
