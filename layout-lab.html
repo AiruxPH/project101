@@ -40,6 +40,7 @@
             width: 100%;
             max-width: 1000px;
             padding: 20px;
+            overflow: auto;
             transition: all 0.3s ease;
         }
 
@@ -170,6 +171,13 @@
                         <select id="parent-direction">
                             <option value="row">Row</option>
                             <option value="column">Column</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Flex Wrap</label>
+                        <select id="parent-wrap">
+                            <option value="nowrap">No Wrap</option>
+                            <option value="wrap">Wrap</option>
                         </select>
                     </div>
                 </div>

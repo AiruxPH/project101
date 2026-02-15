@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gapInput = document.getElementById('parent-gap');
     const columnsInput = document.getElementById('parent-columns');
     const directionSelect = document.getElementById('parent-direction');
+    const wrapSelect = document.getElementById('parent-wrap');
 
     // UI Panels
     const flexPanel = document.getElementById('flex-only-controls');
@@ -22,7 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateParent() {
         const display = displaySelect.value;
         parent.style.display = display;
-        parent.style.gap = gapInput.value;
+
+        // AUTO-UNIT HELPER: Adding 'px' if user just typed a number
+        let gapValue = gapInput.value.trim();
+        if (gapValue && !isNaN(gapValue)) gapValue += 'px';
+        parent.style.gap = gapValue;
 
         // Toggle Panels
         flexPanel.style.display = display === 'flex' ? 'block' : 'none';
@@ -36,15 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (display === 'flex') {
             parent.style.flexDirection = directionSelect.value;
+            parent.style.flexWrap = wrapSelect.value;
         } else {
             parent.style.flexDirection = '';
+            parent.style.flexWrap = '';
         }
+
+        // Parent controls overflow: auto via CSS, but we ensure it's functional
+        parent.style.overflow = 'auto';
     }
 
     displaySelect.addEventListener('change', updateParent);
     gapInput.addEventListener('input', updateParent);
     columnsInput.addEventListener('input', updateParent);
     directionSelect.addEventListener('change', updateParent);
+    wrapSelect.addEventListener('change', updateParent);
 
     // Initial state
     updateParent();
