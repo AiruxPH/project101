@@ -165,9 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const prop = input.getAttribute('data-property');
             if (prop && baseStyles[prop]) {
                 input.value = baseStyles[prop];
+                // Initialize CSS Variable
+                document.documentElement.style.setProperty(`--p-${prop}`, baseStyles[prop]);
             } else if (input.type === 'range' || input.type === 'number') {
-                // Keep current or set to min/default if not in style
-                // Usually cleaner to not force it if user didn't set it, but we need consistency.
+                // Keep current
             }
 
             // Sync Visuals
@@ -227,18 +228,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (value && value !== 'none') {
                 if (unit && !isNaN(value) && value !== '') value += unit;
                 baseStyles[prop] = value;
+
+                // Update CSS Variable
+                const varName = `--p-${prop}`;
+                document.documentElement.style.setProperty(varName, value);
             } else {
                 if (value === 'none') {
-                    // For 'display: none', we probably want to apply it
                     baseStyles[prop] = 'none';
+                    document.documentElement.style.setProperty(`--p-${prop}`, 'none');
                 } else {
                     delete baseStyles[prop];
+                    document.documentElement.style.removeProperty(`--p-${prop}`);
                 }
             }
 
             // If using preset transform, clear manual transform
             if (prop === 'transform' && !manualTransformCheck.checked) {
-                // Should we reset manual data? Yes.
                 manualTransformData = { rotate: 0, scale: 1, skewX: 0, translateX: 0, translateY: 0 };
             }
 
@@ -257,6 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const transformString = `rotate(${r}deg) scale(${s}) skewX(${k}deg) translate(${tx}px, ${ty}px)`;
         baseStyles['transform'] = transformString;
+
+        // Update CSS Variable
+        document.documentElement.style.setProperty('--p-transform', transformString);
 
         // Sync visuals
         const active = document.activeElement;
@@ -387,10 +395,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let cssString = `${idSelector} {\n`;
-        for (const [key, val] of Object.entries(baseProps)) {
-            cssString += `    ${key.replace(/([A-Z])/g, "-$1").toLowerCase()}: ${val};\n`;
-        }
-        if (baseTransforms.length > 0) cssString += `    transform: ${baseTransforms.join(' ')};\n`;
+        // Base properties are now handled by CSS Variables in style.css + :root
+        // We only need to inject bits that are merged or dynamic (like interactions)
+
         if (baseAnimations.length > 0) cssString += `    animation: ${baseAnimations.join(', ')};\n`;
         if (baseTransitions.length > 0) cssString += `    transition: ${[...new Set(baseTransitions)].join(', ')};\n`;
         cssString += `}\n`;

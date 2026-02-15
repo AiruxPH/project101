@@ -1,4 +1,17 @@
 /* Global Styles */
+:root {
+    --p-width: 200px;
+    --p-height: 200px;
+    --p-bg: #3498db;
+    --p-color: #ffffff;
+    --p-display: flex;
+    --p-align: center;
+    --p-justify: center;
+    --p-padding: 20px;
+    --p-fontSize: 16px;
+    --p-transform: none;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -87,13 +100,16 @@ nav ul li a:hover {
 
 /* Preview Object */
 #preview-box {
-    background: #3498db;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
+    background: var(--p-bg);
+    color: var(--p-color);
+    display: var(--p-display);
+    justify-content: var(--p-justify);
+    align-items: var(--p-align);
+    width: var(--p-width);
+    height: var(--p-height);
+    padding: var(--p-padding);
+    font-size: var(--p-fontSize);
+    transform: var(--p-transform);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
     text-align: center;
