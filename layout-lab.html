@@ -227,8 +227,7 @@
 
             <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
                 <button id="copy-code-btn" class="btn-add" style="background: #0f172a; width: 100%;"
-                    aria-label="Copy layout HTML and CSS code to clipboard">Copy Layout
-                    Code</button>
+                    aria-label="View generated HTML and CSS code">View Code</button>
             </div>
         </aside>
 
@@ -237,6 +236,30 @@
                 <!-- Blocks go here -->
             </div>
         </main>
+    </div>
+
+    <!-- Code Export Modal -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content vs-code-theme">
+            <div class="modal-header">
+                <span class="modal-title">Generated Layout Code</span>
+                <span class="close-modal">&times;</span>
+            </div>
+
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="html">HTML</button>
+                <button class="tab-btn" data-tab="css">CSS</button>
+            </div>
+
+            <div class="code-area">
+                <div id="code-html" class="code-content active"></div>
+                <div id="code-css" class="code-content"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="copy-btn">Copy Active Tab</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/layout-lab.js"></script>

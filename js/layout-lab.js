@@ -210,23 +210,110 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // COPY CODE LOGIC
-    copyCodeBtn.addEventListener('click', () => {
-        const parentStyle = parent.getAttribute('style');
+    // --- CODE EXPORT MODAL --- //
+    const modal = document.getElementById('codeModal');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const copyBtn = document.querySelector('.copy-btn');
 
-        let childCode = '';
-        Array.from(parent.children).forEach(child => {
-            childCode += `  <div class="block" style="${child.getAttribute('style')}">${child.innerText}</div>\n`;
+    /**
+     * Opens the code export modal and generates HTML/CSS code
+     */
+    copyCodeBtn.addEventListener('click', () => {
+        // Generate parent styles
+        const parentStyle = parent.style.cssText;
+
+        // Generate child blocks HTML and CSS
+        const blocks = parent.querySelectorAll('.lab-block');
+        let childHTML = '';
+        let childCSS = '';
+
+        blocks.forEach((block, index) => {
+            const blockId = `block-${index + 1}`;
+            const blockText = block.innerText;
+            const blockStyle = block.style.cssText;
+
+            // HTML
+            childHTML += `    <div class="${blockId}">${blockText}</div>\n`;
+
+            // CSS
+            if (blockStyle) {
+                childCSS += `.${blockId} {\n`;
+                // Convert inline styles to CSS properties
+                const styles = blockStyle.split(';').filter(s => s.trim());
+                styles.forEach(style => {
+                    const [prop, value] = style.split(':').map(s => s.trim());
+                    if (prop && value) {
+                        childCSS += `    ${prop}: ${value};\n`;
+                    }
+                });
+                childCSS += `}\n\n`;
+            }
         });
 
-        const fullCode = `<!-- Layout Lab Result -->
-<div id="parent" style="${parentStyle}">
-${childCode}</div>`;
+        // Generate HTML code
+        const htmlCode = `<!-- Layout Lab Result -->\n<div id="parent">\n${childHTML}</div>`;
 
-        navigator.clipboard.writeText(fullCode).then(() => {
-            const original = copyCodeBtn.innerText;
-            copyCodeBtn.innerText = "Copied to Clipboard!";
-            setTimeout(() => copyCodeBtn.innerText = original, 2000);
+        // Generate CSS code
+        let cssCode = `/* Parent Container Styles */\n#parent {\n`;
+        const parentStyles = parentStyle.split(';').filter(s => s.trim());
+        parentStyles.forEach(style => {
+            const [prop, value] = style.split(':').map(s => s.trim());
+            if (prop && value) {
+                cssCode += `    ${prop}: ${value};\n`;
+            }
+        });
+        cssCode += `}\n\n/* Child Block Styles */\n${childCSS}`;
+
+        // Populate modal
+        document.getElementById('code-html').textContent = htmlCode;
+        document.getElementById('code-css').textContent = cssCode;
+
+        // Show modal
+        modal.style.display = 'flex';
+    });
+
+    // Close modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Close on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Tab switching
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+
+            // Update active tab button
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update active content
+            document.querySelectorAll('.code-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`code-${targetTab}`).classList.add('active');
+        });
+    });
+
+    // Copy active tab to clipboard
+    copyBtn.addEventListener('click', () => {
+        const activeContent = document.querySelector('.code-content.active');
+        const code = activeContent.textContent;
+
+        navigator.clipboard.writeText(code).then(() => {
+            const original = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = original, 2000);
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            alert('Failed to copy to clipboard');
         });
     });
 
