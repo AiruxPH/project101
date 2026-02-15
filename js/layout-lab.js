@@ -48,15 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
         parent.style.gap = currentGap;
         gapValueDisplay.innerText = currentGap;
 
+
         // Toggle Panels
         flexPanel.style.display = display === 'flex' ? 'block' : 'none';
         gridPanel.style.display = display === 'grid' ? 'block' : 'none';
 
         if (display === 'grid') {
-            parent.style.gridTemplateColumns = columnsInput.value;
+            // Use default if input is empty
+            const columnValue = columnsInput.value.trim() || 'repeat(3, 1fr)';
+            parent.style.gridTemplateColumns = columnValue;
+            // Update input if it was empty
+            if (!columnsInput.value.trim()) {
+                columnsInput.value = columnValue;
+            }
         } else {
             parent.style.gridTemplateColumns = '';
         }
+
 
         if (display === 'flex') {
             parent.style.flexDirection = directionSelect.value;
