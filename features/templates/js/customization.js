@@ -85,6 +85,16 @@ function generateCustomizationForm(type, wrapper) {
             return generatePricingForm(wrapper);
         case 'contact_form':
             return generateContactFormCustomization(wrapper);
+        case 'features_grid':
+            return generateFeaturesForm(wrapper);
+        case 'testimonial_grid':
+            return generateTestimonialForm(wrapper);
+        case 'stats_counter':
+            return generateStatsForm(wrapper);
+        case 'footer_simple':
+            return generateFooterForm(wrapper);
+        case 'content_center':
+            return generateContentForm(wrapper);
         // Add more cases for other components
         default:
             return '<p style="color: #64748b;">Customization for this component is coming soon!</p>';
@@ -207,6 +217,104 @@ function generateContactFormCustomization(wrapper) {
     `;
 }
 
+/**
+ * Generates form for features grid customization
+ */
+function generateFeaturesForm(wrapper) {
+    const sectionHeading = wrapper.querySelector('h2')?.textContent || '';
+    const sectionDesc = wrapper.querySelector('p')?.textContent || '';
+
+    return `
+        <div class="form-group">
+            <label>Section Heading</label>
+            <input type="text" id="features-heading" class="form-control" value="${sectionHeading}">
+        </div>
+        
+        <div class="form-group">
+            <label>Section Description</label>
+            <textarea id="features-description" class="form-control" rows="3">${sectionDesc}</textarea>
+        </div>
+        
+        <p style="color: #64748b; font-size: 0.85rem; margin-top: 1rem;">
+            <strong>Note:</strong> Individual feature card editing coming soon!
+        </p>
+    `;
+}
+
+/**
+ * Generates form for testimonial grid customization
+ */
+function generateTestimonialForm(wrapper) {
+    const sectionHeading = wrapper.querySelector('h2')?.textContent || '';
+
+    return `
+        <div class="form-group">
+            <label>Section Heading</label>
+            <input type="text" id="testimonial-heading" class="form-control" value="${sectionHeading}">
+        </div>
+        
+        <p style="color: #64748b; font-size: 0.85rem; margin-top: 1rem;">
+            <strong>Note:</strong> Individual testimonial editing coming soon!
+        </p>
+    `;
+}
+
+/**
+ * Generates form for stats counter customization
+ */
+function generateStatsForm(wrapper) {
+    return `
+        <p style="color: #64748b; font-size: 0.9rem;">
+            <strong>Stats Counter Customization</strong><br><br>
+            Individual stat editing coming soon! You'll be able to edit numbers, labels, and add/remove stats.
+        </p>
+    `;
+}
+
+/**
+ * Generates form for footer customization
+ */
+function generateFooterForm(wrapper) {
+    const companyName = wrapper.querySelector('div[style*="font-weight: 900"]')?.textContent || '';
+    const description = wrapper.querySelector('p')?.textContent || '';
+
+    return `
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" id="footer-company" class="form-control" value="${companyName}">
+        </div>
+        
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id="footer-description" class="form-control" rows="3">${description}</textarea>
+        </div>
+        
+        <p style="color: #64748b; font-size: 0.85rem; margin-top: 1rem;">
+            <strong>Note:</strong> Footer link editing coming soon!
+        </p>
+    `;
+}
+
+/**
+ * Generates form for centered content customization
+ */
+function generateContentForm(wrapper) {
+    const heading = wrapper.querySelector('h2')?.textContent || '';
+    const content = wrapper.querySelector('p')?.textContent || '';
+
+    return `
+        <div class="form-group">
+            <label>Heading</label>
+            <input type="text" id="content-heading" class="form-control" value="${heading}">
+        </div>
+        
+        <div class="form-group">
+            <label>Content</label>
+            <textarea id="content-text" class="form-control" rows="5">${content}</textarea>
+        </div>
+    `;
+}
+
 // ========== EVENT LISTENER ATTACHERS ==========
 
 /**
@@ -231,6 +339,21 @@ function attachCustomizationListeners(type, wrapper) {
             break;
         case 'contact_form':
             attachContactFormListeners(wrapper);
+            break;
+        case 'features_grid':
+            attachFeaturesListeners(wrapper);
+            break;
+        case 'testimonial_grid':
+            attachTestimonialListeners(wrapper);
+            break;
+        case 'stats_counter':
+            // No listeners needed yet (placeholder only)
+            break;
+        case 'footer_simple':
+            attachFooterListeners(wrapper);
+            break;
+        case 'content_center':
+            attachContentListeners(wrapper);
             break;
     }
 }
